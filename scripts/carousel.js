@@ -12,7 +12,7 @@ function carousel(data) {
 		for(var a = 0; a < this.images.length; a++) {
 			$(this.constructor).append('<img class="loadImage" style="display:none" src="' + this.images[a] + '" />').css('position','relative')
 		}
-		var initLoadImage = $('<img class="initLoadImage" src='+ this.images[0] +'/>')
+		var initLoadImage = $('<img class="initLoadImage" src='+ this.images[0] + '>')
 		$(this.constructor).append(initLoadImage)
 		initLoadImage.css({'position':'absolute','top':0,'left':0,'z-index':"99"})
 		$('.loadImage').load(function() {
