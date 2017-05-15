@@ -50,7 +50,7 @@
 								<input type="number"  :value=ocloth.Count v-model=ocloth.Count v-on:keyup=minNum($event,index) />
 							<span v-on:click=addNum(index)> + </span>
 						</div>
-						<div class="cloth-td">{{ ocloth.Count * ocloth.Price }}</div>
+						<div class="cloth-td">{{ ocloth.Count * ocloth.Price * ocloth.Active }}</div>
 						<div class="cloth-td"><img class="delCloth" title="删除" v-on:click=delCloth(index) src="images/information/delIcon.png" /></div>
 					</li>
 				</ul>
@@ -59,7 +59,7 @@
 			<div class="totalCount">
 				<div class="totalAllCheck" v-bind:data-state=totalAllCheck v-on:click=AllChecked()>
 					<img class="totalAllchecked" src="images/information/buyCarNoCheaked.png" />
-					<img class="totalAllUnChecked" src="images/information/buyCarClothChecked.png" />
+					<img v-if=totalAllCheck class="totalAllUnChecked" src="images/information/buyCarClothChecked.png" />
 					<span>{{ totalAllCheck ?'全不选':'全选' }}</span>
 				</div>
 				<div class="goBuy">
@@ -106,8 +106,8 @@
 					Size: 'M',
 					Color: '黑色',
 					Price: '1680.00',
-					Active: '0.1',
-					Count: '2',
+					Active: '0.9',
+					Count: '1',
 					Checked: 0
 				},
 				{
@@ -115,8 +115,8 @@
 					Name: '3',
 					Size: 'M',
 					Color: '黑色',
-					Price: '10.01',
-					Active: '0.1',
+					Price: '10.00',
+					Active: '0.9',
 					Count: '3',
 					Checked: 0
 				},
@@ -126,7 +126,7 @@
 					Size: 'M',
 					Color: '黑色',
 					Price: '1680.00',
-					Active: '0.5',
+					Active: '0.95',
 					Count: '4',
 					Checked: 0
 				}
@@ -152,10 +152,10 @@
 				var totalPrice = 0;
 				for(var i = 0; i < this.cloths.length; i++) {
 					if(this.cloths[i].Checked == 1) {
-						totalPrice += parseInt(this.cloths[i].Count) * parseFloat(this.cloths[i].Price)
+						totalPrice += parseInt(this.cloths[i].Count) * parseFloat(this.cloths[i].Price) * parseFloat(this.cloths[i].Active)
 					}
 				}
-				return totalPrice;
+				return totalPrice.toFixed(2);
 			},
 		},
 		methods: {
