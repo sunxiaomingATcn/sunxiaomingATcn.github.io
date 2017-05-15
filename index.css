@@ -1,0 +1,32 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	height: 1000px;
+    margin: 0 auto;
+    max-width: 1920px;
+}
+.header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 50px;
+	width: 100%;
+	background: rgba(0,0,0,.2);
+}
+.page1,.page2{
+	height: 100vh;
+	min-height: 700px;
+	color: #FFF;
+	overflow: hidden;
+}
+.page1{
+	/*background-image: url(images/bg.png);*/
+	background-attachment: fixed;
+	background-size: cover;
+}
+.page1 .container{
+	/*background: rgba(255,255,255,.4);*/
+	height: 100%;
+}

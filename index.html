@@ -2,13 +2,33 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>主页</title>
+		<link rel="stylesheet" href="index.css" />
 	</head>
 	<body>
-		<a href="demo/buyCar.html">Vue购物车</a>
+		<div class="header">
+			
+		</div>
+		<div class="page1">
+			<div class="container">
+				<p>我的作品</p>
+			<a href="demo/buyCar.html">Vue购物车</a>
+			</div>
+			
+		</div>
+		<div class="page2"></div>
 	</body>
-	
-	<script>
-	
+	<script src="demo/scripts/jquery-2.1.1.min.js"></script>
+	<script src="scripts/carousel.js"></script>
+	<script type="text/javascript">
+		new carousel({
+			images : [
+				'images/bg1.jpg',
+				'images/bg2.jpg',
+				'images/bg3.jpg',
+				'images/bg4.jpg',
+			],
+			constructor:'.page1'
+		})
 	</script>
 </html>
