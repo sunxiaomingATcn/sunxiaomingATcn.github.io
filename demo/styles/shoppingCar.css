@@ -47,6 +47,7 @@ body{
 	background: url(../images/information/bg.png);
 	background-size: cover;
 	background-position: center;
+	font-family: "microsoft yahei",sans-serif;
 }
 [v-cloak] {
    display: none;
