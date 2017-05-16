@@ -75,14 +75,14 @@ function Carousel(data) {
 				}
 			break;
 			case 1:
-				var oneBlastWidth = this.constructor.offsetWidth / 40;
+				var oneBlastWidth = this.constructor.offsetWidth / 30;
 				var oneBlastHeight = this.constructor.offsetHeight / 1;
 				oneBlastWidth = oneBlastWidth.toFixed(0);
 				oneBlastHeight = oneBlastHeight.toFixed(0);
 				var Image = this.images[this.imageIndex % this.mIndex ];
 				var oneBoxInnerHtml = '';
 				for(var j = 0; j < 1; j++) {
-					for(var i = 0; i <= 40; i++) {
+					for(var i = 0; i <= 30; i++) {
 						var dealy = Math.abs(i - j) / 10;
 						oneBoxInnerHtml += '<span class="oneBox h" style="background-color:#21160f;background-image:url(' + imageSRC + ');background-position:' + -i * oneBlastWidth + 'px ' + -j * oneBlastHeight + 'px;display:block;position: absolute;width:' + oneBlastWidth + 'px;height:' + oneBlastHeight + 'px;top:' + j * oneBlastHeight + 'px;left:' + i * oneBlastWidth + 'px" ></span>'
 					}
@@ -105,7 +105,7 @@ function Carousel(data) {
 		var t = 0;
 		blastBox.style.zIndex = 101;
 		nextBlastBox.style.zIndex = 100;
-		switch( blastBoxIndex % 4 ){
+		switch( blastBoxIndex % 5 ){
 			case 0 ://顺序翻转
 				 for( var i = 0; i < boxs.length ; i ++){
 					var this_blast = boxs[i];
@@ -120,6 +120,31 @@ function Carousel(data) {
 					this_blast.style.webkitTransitionDelay = t + '1s';
 					this_blast.style.transformOrigin = 'bottom center';
 					this_blast.style.webkitTransformOrigin = 'bottom center'
+				}
+			break;
+			case 1://碎裂
+				for( var i = 0; i < boxs.length ; i ++){
+					var this_blast = boxs[i];
+					t = Math.random();
+					this_blast.style.transform = 'translateZ(100px) scale(.98,.98)';
+					this_blast.style.opacity = '0';
+					this_blast.style.perspective = '200px';
+					this_blast.style.transition = '1s all';
+					this_blast.style.webkitTransition = '1s all';
+					this_blast.style.transitionDelay = t + 's';
+				}
+			break;
+			case 2://百叶窗
+				 for( var i = 0; i < boxs.length ; i ++){
+					var this_blast = boxs[i];
+					t += 0.02;
+					this_blast.style.transform = 'translateY(1000px)';
+					this_blast.style.webkitTransform = 'translateY(1000px)';
+					this_blast.style.perspective = '200px';
+					this_blast.style.transition = '1s all';
+					this_blast.style.webkitTransition = '1s all';
+					this_blast.style.transitionDelay = t + 's';
+						
 				}
 			break;
 			case 3://爆炸
@@ -137,30 +162,17 @@ function Carousel(data) {
 					this_blast.style.webkitTransition = '1s all';
 				}
 			break;
-			case 2://百叶窗
+			case 4://左上手起
 				 for( var i = 0; i < boxs.length ; i ++){
 					var this_blast = boxs[i];
 					t += 0.02;
-					this_blast.style.opacity = 1;
-					this_blast.style.transform = 'translateY(-1000px)';
-					this_blast.style.webkitTransform = 'translateY(-1000px)';
+					this_blast.style.transform = 'translate(-100vw,-100vh)';
+					this_blast.style.webkitTransform = 'translate(-100vw,-100vh)';
 					this_blast.style.perspective = '200px';
 					this_blast.style.transition = '1s all';
 					this_blast.style.webkitTransition = '1s all';
 					this_blast.style.transitionDelay = t + 's';
 						
-				}
-			break;
-			case 1://碎裂
-				for( var i = 0; i < boxs.length ; i ++){
-					var this_blast = boxs[i];
-					t = Math.random();
-					this_blast.style.opacity = '0';
-					this_blast.style.transform = 'translateZ(100px) scale(.98,.98)';
-					this_blast.style.perspective = '200px';
-					this_blast.style.transition = '1s all';
-					this_blast.style.webkitTransition = '1s all';
-					this_blast.style.transitionDelay = t + 's';
 				}
 			break;
 		}
