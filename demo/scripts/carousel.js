@@ -140,7 +140,7 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 	var boxClassName = thisBlastBoxSons[0].className;
 	//控制碎片动画
 	var t = 0;
-	var transformTime = '.5s all';
+	var transformTime = '.65s all';
 	switch( boxClassName ){
 		case 'oneBoxSquare'://正方形碎片
 			switch( this.curentAnimateIndex % 3 ){
@@ -157,13 +157,13 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 						this_blast.style.transitionDelay = t + 's';
 					}
 				break;
-				case 1://碎裂
+				case 1://碎裂漂浮
 					for( var i = 0; i < thisBlastBoxSons.length ; i ++){
 						var this_blast = thisBlastBoxSons[i];
-						t = Math.random();
-						this_blast.style.transform = 'translateZ(1000px) scale(.95,.95)';
-						this_blast.style.opacity = '0.5';
-						this_blast.style.perspective = '-200px';
+						t = (Math.random()*10)/5;
+						this_blast.style.transform = 'translateZ(300px) scale(.95,.95)';
+						this_blast.style.opacity = '0';
+						this_blast.style.perspective = '-300px';
 						this_blast.style.transition = transformTime;
 						this_blast.style.webkitTransition = transformTime;
 						this_blast.style.transitionDelay = t + 's';
