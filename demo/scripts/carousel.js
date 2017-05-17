@@ -22,7 +22,7 @@ function Carousel(data) {
 	this.BlastAnimateBegined = false;
 	this.intervalTime = data.intervalTime || 5000;
 	this.constructor = document.querySelector(data.constructor) || 'body';
-	this.constructor.style.position = 'relative';
+	//this.constructor.style.position = 'relative';
 	this.carouselBlastBox = null;
 	this.autoAnimate = data.autoAnimate;
 	this.curentAnimateIndex = 0;
@@ -33,10 +33,16 @@ Carousel.prototype.initLoadImage = function() {
 	if(!this.mIndex())return;
 	
 	this.intervalTime < 2000 ? this.intervalTime = 2000 : this.intervalTime = this.intervalTime;
-	
+	this.carouseltBox = document.createElement('div');
+	this.carouseltBox.className = 'carouseltBox';
+	this.carouseltBox.style.width = this.constructor.offsetWidth +'px';
+	this.carouseltBox.style.height = this.constructor.offsetHeight +'px';
+	this.carouseltBox.style.position = 'relative'
+	this.carouseltBox.style.overflow = 'hidden';
 	for ( var i= 0 ; i < this.mIndex() ; i++){
 		this.loadBlast(this.images[i],i)//加载碎片
 	}
+	this.constructor.appendChild(this.carouseltBox)
 	//是否自动执行动画
 	if(this.autoAnimate == true || this.autoAnimate == undefined ){
 		this.BlastAnimateBegin()
@@ -104,13 +110,13 @@ Carousel.prototype.loadBlast = function(imageSRC,imageIndex){
 	}
 	
 	this.carouselBlastBox.innerHTML = oneBoxInnerHtml;
-	this.constructor.appendChild(this.carouselBlastBox)
+	this.carouseltBox.appendChild(this.carouselBlastBox);
 }
 Carousel.prototype.animateBlast = function(targetAnimateIndex){
 	//targetAnimateIndex存在时点击事件触发动画
 	//console.log((this.curentAnimateIndex) +'target' + (targetAnimateIndex))
 	//当前图片dom对象
-	var blast = this.getChildren(this.constructor,'carouselBlastBox',this.curentAnimateIndex);
+	var blast = this.getChildren(this.carouseltBox,'carouselBlastBox',this.curentAnimateIndex);
 	var thisBlastBox = blast.thisBlastBox;
 	//当前图片碎片
 	var thisBlastBoxSons = thisBlastBox.childNodes;
@@ -119,7 +125,7 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 	if(targetAnimateIndex == undefined ){//自动播放
 		var nextBlastBox = blast.nextBlastBox;
 	}else{//点击控制切换
-		var nextBlastBox = this.getChildren(this.constructor,'carouselBlastBox',targetAnimateIndex).thisBlastBox;
+		var nextBlastBox = this.getChildren(this.carouseltBox,'carouselBlastBox',targetAnimateIndex).thisBlastBox;
 		if(this.curentAnimateIndex == targetAnimateIndex){
 			return;//如果当前图片和目标图片是同一个,不继续执行动画
 		}
@@ -255,9 +261,7 @@ Carousel.prototype.clickAnimateButton = function(){
 	var buttons = this.buttons;
 	var btnHtml = new String(),btnDom;
 	btnDom = document.createElement('div');
-	btnDom.style.zIndex = 1999;
 	btnDom.className = 'carouselButtonBox';
-	btnDom.style.position = 'relative';
 	var _this = this;
 	for( var i = 0; i < this.mIndex(); i++){
 		var oBtnDom = document.createElement('div');
