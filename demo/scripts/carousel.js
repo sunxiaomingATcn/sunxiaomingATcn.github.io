@@ -27,6 +27,8 @@ function Carousel(data) {
 	this.autoAnimate = data.autoAnimate;
 	this.curentAnimateIndex = 0;
 	this.imageIndex = 99;
+	this.width = data.width || this.constructor.offsetWidth;
+	this.height = data.height || this.constructor.offsetHeight;
 }
 Carousel.prototype.initLoadImage = function() {
 	//初始化碎片
@@ -35,8 +37,8 @@ Carousel.prototype.initLoadImage = function() {
 	this.intervalTime < 2000 ? this.intervalTime = 2000 : this.intervalTime = this.intervalTime;
 	this.carouseltBox = document.createElement('div');
 	this.carouseltBox.className = 'carouseltBox';
-	this.carouseltBox.style.width = this.constructor.offsetWidth +'px';
-	this.carouseltBox.style.height = this.constructor.offsetHeight +'px';
+	this.carouseltBox.style.width = this.width +'px';
+	this.carouseltBox.style.height = this.height +'px';
 	this.carouseltBox.style.position = 'relative'
 	this.carouseltBox.style.overflow = 'hidden';
 	for ( var i= 0 ; i < this.mIndex() ; i++){
