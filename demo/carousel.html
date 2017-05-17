@@ -5,118 +5,139 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<style>
-			*{
+			* {
 				margin: 0;
 				padding: 0;
 			}
-			.page{
+			body{
+				min-width: 1040px;
+			}
+			.page {
 				height: 100vh;
 				min-height: 300px;
 				color: #FFF;
 				overflow: hidden;
-				color: #FFF;
-				/*width: 90%;*/
-				margin: 0 auto;
+				color: #000;
+				width: 500px;
 				overflow: hidden;
+				margin: 0 10px;
 			}
-			.container{
+			.page1{
+				float: left;
+			}
+			.page2{
+				float: right;
+				
+			}
+			.container {
 				z-index: 100000;
 				position: relative;
 				font-size: 14px;
 			}
-			h3{
+			.carouselButton{
+				float: left;
+				padding: 10px 20px;
+				background: #FFF;
+				box-shadow: 2px 2px 2px #CCC;
+				border-radius: 10px;
+				margin: 10px;
+			}
+			h3 {
 				margin: 20px;
 				font-weight: normal;
 			}
-			p{
+			
+			p {
 				width: 500px;
 				margin: 0 auto;
 				font-size: 14px;
 				line-height: 20px;
 			}
+			span{
+				color: #000;
+			}
 		</style>
 	</head>
 
 	<body>
-		<div class="page page2">
-			<div class="container">
-				<h3>自动轮播</h3>
-				<p>使用方法</p>
-				<p>
-					var carousel = new Carousel(
-						<br />
-						&nbsp;{
-						<br />
-						&nbsp;&nbsp;images: [
-						    <br />
-							&nbsp;&nbsp;&nbsp;'images/carousel/bg1.jpg',
-							<br />
-							&nbsp;&nbsp;&nbsp;'images/carousel/bg2.jpg',
-							<br />
-							&nbsp;&nbsp;&nbsp;'images/carousel/bg3.jpg',
-							<br />
-							&nbsp;&nbsp;&nbsp;'images/carousel/bg4.jpg',
-							<br />
-							&nbsp;&nbsp;&nbsp;'images/carousel/bg5.jpg',
-							<br />
-						&nbsp;&nbsp;], //图片数组，建议图片尺寸相同
-						<br />
-						&nbsp;&nbsp;constructor: '#page1', //图片容器,建议定义容器大小小于等于图片实际尺寸
-						<br />
-						&nbsp;&nbsp;intervalTime: '3000', //切换间隔
-						<br />
-						&nbsp;&nbsp;autoAnimate: true //是否自动播放
-						<br />
-						&nbsp;}
-						<br />
-						carousel.initLoadImage()//轮播实例初始化
-						<br />
-					)
-				</p>
-			</div>
-		</div>
+		
 		<div class="page page1" id="page1">
 			<div class="container">
 				<h3>点击事件触发轮播</h3>
-				
+
 			</div>
-			
+
 		</div>
-		
-		
+	<div class="page page2">
+			<div class="container">
+				<h3>自动轮播</h3>
+				<!--<p>使用方法</p>
+				<p>
+					var carousel = new Carousel(
+					<br /> &nbsp;{
+					<br /> &nbsp;&nbsp;images: [
+					<br /> &nbsp;&nbsp;&nbsp;'images/carousel/bg1.jpg',
+					<br /> &nbsp;&nbsp;&nbsp;'images/carousel/bg2.jpg',
+					<br /> &nbsp;&nbsp;&nbsp;'images/carousel/bg3.jpg',
+					<br /> &nbsp;&nbsp;&nbsp;'images/carousel/bg4.jpg',
+					<br /> &nbsp;&nbsp;&nbsp;'images/carousel/bg5.jpg',
+					<br /> &nbsp;&nbsp;], //图片数组，建议图片尺寸相同
+					<br /> &nbsp;&nbsp;constructor: '#page1', //图片容器,建议定义容器大小小于等于图片实际尺寸
+					<br /> &nbsp;&nbsp;intervalTime: '3000', //切换间隔
+					<br /> &nbsp;&nbsp;autoAnimate: true //是否自动播放
+					<br /> &nbsp;}
+					<br /> carousel.initLoadImage()//轮播实例初始化
+					<br /> )
+				</p>-->
+			</div>
+		</div>
 	</body>
 	<script src="scripts/carousel.js"></script>
 	<script type="text/javascript">
 		var carousel = new Carousel({
 			images: [
-				'images/carousel/bg1.jpg',
-				'images/carousel/bg2.jpg',
-				'images/carousel/bg3.jpg',
-				'images/carousel/bg4.jpg',
-				'images/carousel/bg5.jpg',
-				
+				'images/carousel/0.png',
+				'images/carousel/1.png',
+				'images/carousel/2.png',
+				'images/carousel/3.png', 
+				'images/carousel/4.png',
+				'images/carousel/5.png', 
+				'images/carousel/6.png', 
+
 			], //图片数组
 			constructor: '#page1', //图片容器
 			intervalTime: '3000', //切换间隔
-			autoAnimate: false //是否自动播放
+			autoAnimate: false, //是否自动播放
+			buttons: [
+				'0',
+				'1',
+				'2',
+				'3',
+				'4',
+				'5',
+				'6',
+			]
 		})
 		carousel.initLoadImage()
-		
-		var carousel2 = new Carousel({
-			images: [
-				'images/carousel/bg2.jpg',
-				'images/carousel/bg3.jpg',
-				'images/carousel/bg4.jpg',
-				'images/carousel/bg5.jpg',
-			], //图片数组
-			constructor: '.page2', //图片容器
-			intervalTime: '2000' //切换间隔
-		})
-		carousel2.initLoadImage();
 
-		document.onclick = function() {
-			carousel.BlastAnimateBegin()
-		}
+				var carousel2 = new Carousel({
+					images: [
+						'images/carousel/0.png',
+						'images/carousel/1.png',
+						'images/carousel/2.png',
+						'images/carousel/3.png', 
+						'images/carousel/4.png',
+						'images/carousel/5.png', 
+						'images/carousel/6.png', 
+						'images/carousel/7.png',
+						'images/carousel/8.png', 
+						'images/carousel/9.png', 
+					], //图片数组
+					constructor: '.page2', //图片容器
+					intervalTime: '2000' //切换间隔
+				})
+				carousel2.initLoadImage();
+
 	</script>
 
 </html>
