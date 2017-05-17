@@ -140,6 +140,7 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 	var boxClassName = thisBlastBoxSons[0].className;
 	//控制碎片动画
 	var t = 0;
+	var transformTime = '.5s all';
 	switch( boxClassName ){
 		case 'oneBoxSquare'://正方形碎片
 			switch( this.curentAnimateIndex % 3 ){
@@ -151,8 +152,8 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 						this_blast.style.opacity = '0';
 						this_blast.style.webkitTransform = 'rotateY(180deg)';
 						this_blast.style.perspective = '200px';
-						this_blast.style.transition = '1s all';
-						this_blast.style.webkitTransition = '1s all';
+						this_blast.style.transition = transformTime;
+						this_blast.style.webkitTransition = transformTime;
 						this_blast.style.transitionDelay = t + 's';
 					}
 				break;
@@ -160,11 +161,11 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 					for( var i = 0; i < thisBlastBoxSons.length ; i ++){
 						var this_blast = thisBlastBoxSons[i];
 						t = Math.random();
-						this_blast.style.transform = 'translateZ(100px) scale(.98,.98)';
-						this_blast.style.opacity = '0';
-						this_blast.style.perspective = '200px';
-						this_blast.style.transition = '1s all';
-						this_blast.style.webkitTransition = '1s all';
+						this_blast.style.transform = 'translateZ(1000px) scale(.95,.95)';
+						this_blast.style.opacity = '0.5';
+						this_blast.style.perspective = '-200px';
+						this_blast.style.transition = transformTime;
+						this_blast.style.webkitTransition = transformTime;
 						this_blast.style.transitionDelay = t + 's';
 					}
 				break;
@@ -178,8 +179,8 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 						this_blast.style.perspective = '200px';
 						this_blast.style.transform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(100px)';
 						this_blast.style.webkitTransform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) translateZ(100px)';
-						this_blast.style.transition = '1s all';
-						this_blast.style.webkitTransition = '1s all';
+						this_blast.style.transition = transformTime;
+						this_blast.style.webkitTransition = transformTime;
 					}
 				break;
 				
@@ -195,8 +196,8 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 						this_blast.style.transform = 'rotateY(90deg)';
 						this_blast.style.webkitTransform = 'rotateY(90deg)';
 						this_blast.style.perspective = '20px';
-						this_blast.style.transition = '1s all';
-						this_blast.style.webkitTransition = '1s all';
+						this_blast.style.transition = transformTime;
+						this_blast.style.webkitTransition = transformTime;
 						this_blast.style.transitionDelay = t + 's';
 						this_blast.style.webkitTransitionDelay = t + '1s';
 						this_blast.style.transformOrigin = 'bottom center';
@@ -206,12 +207,12 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 				case 1://百叶窗
 					 for( var i = 0; i < thisBlastBoxSons.length ; i ++){
 						var this_blast = thisBlastBoxSons[i];
-						t += 0.02;
+						t += 0.01;
 						this_blast.style.transform = 'translateY(1000px)';
 						this_blast.style.webkitTransform = 'translateY(1000px)';
 						this_blast.style.perspective = '200px';
-						this_blast.style.transition = '1s all';
-						this_blast.style.webkitTransition = '1s all';
+						this_blast.style.transition = transformTime;
+						this_blast.style.webkitTransition = transformTime;
 						this_blast.style.transitionDelay = t + 's';
 					}
 				break;
@@ -222,8 +223,8 @@ Carousel.prototype.animateBlast = function(targetAnimateIndex){
 						this_blast.style.transform = 'scale(1,0)';
 						this_blast.style.webkitTransform = 'scale(1,0)';
 						this_blast.style.perspective = '200px';
-						this_blast.style.transition = '1s all';
-						this_blast.style.webkitTransition = '1s all';
+						this_blast.style.transition = transformTime;
+						this_blast.style.webkitTransition = transformTime;
 						this_blast.style.transitionDelay = t + 's';
 							
 					}
