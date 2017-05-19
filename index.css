@@ -6,6 +6,7 @@ body{
 	height: 1000px;
     margin: 0 auto;
     max-width: 1920px;
+    background: #11CCC8;
 }
 .header{
 	position: fixed;
@@ -18,19 +19,19 @@ body{
 }
 .page{
 	height: 100vh;
-	min-height: 700px;
+	max-height: 1000px;
 	color: #FFF;
 	overflow: hidden;
 }
 .page1{
-	/*background-image: url(images/bg.png);*/
+	background-image: url(images/bg8.jpg);
 	background-attachment: fixed;
 	background-size: cover;
 	width: 100%;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 .page1 .container{
-	background: rgba(255,255,255,.4);
+	background: rgba(255,255,255,.2);
 	z-index: 10000;
 	position: absolute;
 	width: 100%;
