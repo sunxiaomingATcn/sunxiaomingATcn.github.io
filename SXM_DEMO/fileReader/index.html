@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<!--<script src="jquery-2.1.1.min.js"></script>-->
+	<script>
+		var readImage = function(data){
+			this.uploadButton = data.uploadImageButton || document.querySelector('body') ;
+			this.Multiselect = data.Multiselect || false;
+			this.filterImageType = data.filterImageType || ['image/png','image/jpg','image/bmp','image/','image/gif'];
+			
+			this.init = function(){
+				var uploadInput = document.createElement('input');
+				var uploadDiv = document.createElement('div');
+				uploadDiv.style.width = '100px';
+				uploadDiv.style.height = '100px';
+				uploadDiv.style.background = 'red';
+				uploadInput.id = data.id;
+				uploadInput.type = 'file';
+				uploadInput.accept = this.filterImageType.join(',');
+				if(this.Multiselect){
+					uploadInput.multiple = 'multiple';
+				}
+				uploadInput.onchange = function(ev){
+					var files = ev.target.files;
+					console.log(files)
+				}
+				uploadDiv.onclick = function(){
+					uploadInput.click()
+				}
+				this.uploadButton.appendChild(uploadInput)
+				this.uploadButton.appendChild(uploadDiv)
+			}
+		}
+
+		var a = new readImage({"Multiselect":true,"id":"file1"})
+		a.init()
+		
+		var b = new readImage({"id":"file2"})
+		b.init()
+	</script>
+</html>

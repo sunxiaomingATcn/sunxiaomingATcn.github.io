@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#container {  
+    width: 90%;  
+    margin: 0 auto;  
+    border: 1px solid #000;  
+}  
+  
+h3 {  
+    width: 100%;  
+    height: 40px;  
+    line-height: 40px;  
+    text-align: center;  
+    margin: 0;  
+    border-bottom: 1px solid #000;  
+}  
+  
+.myTitle,  
+.myContent {  
+    font-size: 0;  
+    width: 100%;  
+    padding: none;  
+    list-style: none;  
+}  
+  
+.myTitle li,  
+.myContent li {  
+    width: 25%;  
+    font-size: 14px;  
+    height: 30px;  
+    line-height: 30px;  
+    text-align: center;  
+    display: inline-block;  
+}  
+  
+.myTitle li:not(:first-child),  
+.myContent li:not(:first-child) {  
+    box-sizing: border-box;  
+    border-left: 1px solid #000;  
+}  
+  
+.myContent ul {  
+    border-top: 1px solid #000;  
+}  
+.priceAll,.tips{  
+    border-top: 1px solid #000;  
+}  
+		</style>
+	</head>
+	<body >
+		<div>  
+    展示：商品名称，商品价格，商品购买数量，操作按钮，商品总价<br>  
+    方法：增加方法addNum，减少方法reduceNum,移除商品removeGoods<br>  
+    计算属性：计算总价<br>  
+    添加input框，输入值，响应更新<br>  
+</div>  
+<div id="container">  
+    <h3>我的购物车</h3>  
+    <div class="myTitle">  
+        <ul>  
+        <span style="white-space:pre">  </span><!--//input的value通过v-model绑定，通过addCommodity（）实现响应更新-->  
+        <span style="white-space:pre">  </span><li>商品名称：<span><input type="text" v-model="inputName"/></span></li>  
+            <li>商品价格：<span><input type="number" v-model="inputPrice"/></span></li>  
+            <li>商品数量：<span><input type="number" v-model="inputNum"/></span></li>  
+            <li>操作/ <button v-on:click="addCommodity(items.length)">加入</button></li>  
+        </ul>  
+    </div>  
+    <!--判断items长度，渲染不同模板，因为切换不是很频繁所以选择v-if渲染-->  
+    <template v-if="items.length">  
+        <div class="myContent">  
+            <ul v-for = "(item,index) in items" v-bind:id = item.id>   
+                <li>{{item.name}}</li>  
+                <li>￥{{item.price}}</li>  
+                <li>  
+                    <span v-on:click = "addNum(index)"><button>+</button></span>  
+                    <span>{{item.count}}</span>  
+                    <span v-on:click = "reduceNum(index)"><button>-</button></span>  
+                </li>  
+                <li><button v-on:click = "removeGoods(index)">移除</button></li>  
+            </ul>  
+        </div>  
+        <div class="priceAll">  
+            <!--currency过滤器 : 将输入的数字转换成现金的过滤器。可以跟上货币符号（默认$）和保留的小数位（默认2）。-->  
+            <span>总价:{{priceTotal | currency '￥' '2'}}</span>  
+        </div>  
+    </template>  
+    <template v-else>  
+        <div class="tips">  
+            您的购物车空了，  
+            你是否需要<a href="#">重新挑选</a>  
+        </div>  
+    </template>  
+</div>  
+	</body>
+	<script src="vue.min.js"></script>
+	<script>
+
+		//数据绑定
+		var vm = new Vue({  
+		    el: "#container",  
+		    data: {  
+		        //items :data中的变量挂载在VM上，即vm.item或者this.items
+		        items: [{  
+		            name: "腰子树",  
+		            price: 1,  
+		            id: 1,  
+		            count: 1  
+		        }, ],  
+		        inputName: "",  
+		        inputPrice: null,  
+		        inputNum: null,  
+		    },  
+		    computed: { //计算属性，计算总价格，返回给页面展示
+		    	//(根据初始化的属性值计算得到的值，其值的变化取决于函数中用到的vm.items的改变)
+		        priceTotal: function() {  
+		            var price = 0;  
+		            //遍历items数组,计算当前（this）price字段和count字段的价格总和  
+		            for(var i = 0; i < this.items.length; i++) {  
+		                price += this.items[i].price * this.items[i].count;  
+		            }  
+		            return price;  
+		        }  
+		    },  
+		    methods: {  
+		        addCommodity: function(length) {  
+		            //通过手动输入商品加入商品  
+		            if(this.inputNum == null || this.inputName == null || this.inputPrice == null){  
+		                alert("请填写完整商品名称，价格以及数量！")  
+		            }else{  
+		                if(this.inputNum > 10 || this.inputNum < 1) {  
+		                    alert("请输入1-10之间的数字！");  
+		                } else {  
+		                    this.items.push({  
+		                    	//v-model实际是挂载在vue实例vm上的属性，随着表单值改变
+		                        name: this.inputName,  
+		                        price: this.inputPrice,  
+		                        id: "goods" +length,  
+		                        count: this.inputNum  
+		                    });  
+		                };  
+		                this.inputName = null;  
+		                this.inputPrice = null;  
+		                this.inputNum = null;  
+		            }  
+		        },  
+		        addNum: function(index) {//实现增加购买数量  
+		            var current = this.items[index];  
+		            if(current.count >= 10) {  
+		                alert("库存不够");  
+		            } else {  
+		                current.count++;  
+		            }  
+		        },  
+		        reduceNum: function(index) {  
+		            //实现减少购买数量  
+		            var current = this.items[index];  
+		            if(current.count <= 1) {  
+		                alert("数量不能小于1");  
+		            } else {  
+		                current.count--;  
+		            }  
+		        },  
+		        removeGoods: function(index) {  
+		            //vue1.0有方法this.items.$remove(item);需要从html传入一个参数item，2.0移除后用splice操作数组实现  
+		            //实现移除操作  
+		            this.items.splice(index, 1);  
+		        }  
+		    }  
+		});  
+	</script>
+</html>

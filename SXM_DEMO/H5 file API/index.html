@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type='file' multiple />
+		<script>
+		    document.querySelector('input').onchange = function() {
+		      console.log(this.files);
+		      var file = this.files[0];  
+            if(window.FileReader) {  
+                var fr = new FileReader();  
+                fr.onloadend = function(e) {  
+                   console.log(e.target.result);  
+                };  
+                fr.readAsText(file);  
+            }  
+		    };
+		</script>
+	</body>
+</html>

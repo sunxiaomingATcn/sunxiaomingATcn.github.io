@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+	<script>
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+		var background = 'rgba(154,206,210,1)';
+		var clientW = 1000;
+		var clientH  = 500;
+		canvas.width = clientW;
+		canvas.height = clientH;
+		ctx.fillStyle = background;
+		ctx.fillRect(0, 0, canvas.width,canvas.height);
+		//像素信息数组
+		var imagedata;
+		var image = new Image();
+		var positionArr = [];
+		var lzObjectArr = [];
+		var letter = 'hello world';
+		var fontFamily = 'Avenir, Helvetica Neue, Helvetica, Arial, sans-serif';
+		
+		setInterval(eva, 30);
+		function eva(){
+			setText();
+			chageGap();
+		}
+		var o = 10000000;
+		function setText (){
+			clearCanvas();
+			ctx.fillStyle = "red";
+			ctx.font = 120 + 'px ' + fontFamily;
+			var data = o--;
+			ctx.fillText(data, 10, 100);
+			getcal(function(){
+				clearCanvas()
+				for(var i = 0; i < lzObjectArr.length; i++) {
+					var particle = lzObjectArr[i]
+					particle.render(); // 绘制数组中的每一个粒子
+					// 更新数组中的每一个粒子
+					//particle.update();
+				}
+			})
+		}
+		function chageGap(){
+				for(var c = 0 ; c< 100 ; c++){
+				sjcircleOBjectArr[c].update()
+				}
+			}
+		function clearCanvas(){
+			ctx.fillStyle = background;
+			ctx.fillRect(0, 0, clientW, clientH);
+		}
+		//循环处理像素
+		function getcal(callback) {
+			lzObjectArr = []
+			imagedata = ctx.getImageData(0, 0, clientW, clientH)
+			var length = imagedata.data.length;
+			var cols = imagedata.width;
+			var rows = imagedata.height;
+			
+			for(var i = 1; i < cols; i+=5) {
+				for(var j = 1; j < rows; j+=5) {
+					//计算坐标对应像素索引
+					var index = ((j - 1) * cols + (i - 1)) * 4;
+					var color = 'RGBA(' + imagedata.data[index] + ',' + imagedata.data[index + 1] + ',' + imagedata.data[index + 2] + ',' + imagedata.data[index + 3] + ')'
+					var position = {
+						"x": i,
+						"y": j,
+						"color":color
+						
+					}
+					//positionArr.push(position)
+					if(imagedata.data[index] !=154 && imagedata.data[index+1]!=206 && imagedata.data[index+2]!=210 ){
+						lzObjectArr.push(new lz(position.x,position.y))
+					}
+					
+				}
+			}
+			callback()
+		}
+		function lz (x,y,color,pi){
+			this.x  = x;
+			this.y = y;
+			this.color = color || '#FFF';
+			this.pi = pi || 2;
+			this.render = function(){
+				ctx.beginPath();
+				ctx.fillStyle = this.color;
+				//ctx.fillRect(this.x, this.y, 10, 10);
+				ctx.arc(this.x, this.y, this.pi, 0, Math.PI * 2);
+				ctx.fill();
+			}
+			this.update = function(){
+					this.x += Math.random()* 4 - 2;
+					this.y += Math.random()* 4 - 2;
+			    
+				
+				this.render();
+			}
+		}
+		
+		var sjcircleOBjectArr = [];
+			for( var z = 0; z< 100; z++){
+				var x = Math.random()*900; 
+				var y = Math.random()*500; 
+				var circle = new lz(x,y,'rgba(255,255,255,.5)',5)
+				circle.render();
+				sjcircleOBjectArr.push(circle)
+				
+			}
+	</script>
+
+</html>
