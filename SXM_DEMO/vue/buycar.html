@@ -99,77 +99,190 @@ h3 {
 	<script src="vue.min.js"></script>
 	<script>
 
-		//数据绑定
-		var vm = new Vue({  
-		    el: "#container",  
-		    data: {  
-		        //items :data中的变量挂载在VM上，即vm.item或者this.items
-		        items: [{  
-		            name: "腰子树",  
-		            price: 1,  
-		            id: 1,  
-		            count: 1  
-		        }, ],  
-		        inputName: "",  
-		        inputPrice: null,  
-		        inputNum: null,  
-		    },  
-		    computed: { //计算属性，计算总价格，返回给页面展示
-		    	//(根据初始化的属性值计算得到的值，其值的变化取决于函数中用到的vm.items的改变)
-		        priceTotal: function() {  
-		            var price = 0;  
-		            //遍历items数组,计算当前（this）price字段和count字段的价格总和  
-		            for(var i = 0; i < this.items.length; i++) {  
-		                price += this.items[i].price * this.items[i].count;  
-		            }  
-		            return price;  
-		        }  
-		    },  
-		    methods: {  
-		        addCommodity: function(length) {  
-		            //通过手动输入商品加入商品  
-		            if(this.inputNum == null || this.inputName == null || this.inputPrice == null){  
-		                alert("请填写完整商品名称，价格以及数量！")  
-		            }else{  
-		                if(this.inputNum > 10 || this.inputNum < 1) {  
-		                    alert("请输入1-10之间的数字！");  
-		                } else {  
-		                    this.items.push({  
-		                    	//v-model实际是挂载在vue实例vm上的属性，随着表单值改变
-		                        name: this.inputName,  
-		                        price: this.inputPrice,  
-		                        id: "goods" +length,  
-		                        count: this.inputNum  
-		                    });  
-		                };  
-		                this.inputName = null;  
-		                this.inputPrice = null;  
-		                this.inputNum = null;  
-		            }  
-		        },  
-		        addNum: function(index) {//实现增加购买数量  
-		            var current = this.items[index];  
-		            if(current.count >= 10) {  
-		                alert("库存不够");  
-		            } else {  
-		                current.count++;  
-		            }  
-		        },  
-		        reduceNum: function(index) {  
-		            //实现减少购买数量  
-		            var current = this.items[index];  
-		            if(current.count <= 1) {  
-		                alert("数量不能小于1");  
-		            } else {  
-		                current.count--;  
-		            }  
-		        },  
-		        removeGoods: function(index) {  
-		            //vue1.0有方法this.items.$remove(item);需要从html传入一个参数item，2.0移除后用splice操作数组实现  
-		            //实现移除操作  
-		            this.items.splice(index, 1);  
-		        }  
-		    }  
-		});  
-	</script>
+			var buyCar = new Vue({
+		el: "#buyCarBox",
+		data: {
+			transitionName :  'expand',
+			cloths: [{
+					ImagePath: '/Content/Images/information/carClothDemo.jpg',
+					Name: '1',
+					Size: 'M',
+					Color: '黑色',
+					Price: '1680.00',
+					Active: '0.5',
+					Count: '1',
+					Checked: 0,
+				},
+				{
+					ImagePath: '/Content/Images/information/carClothDemo.jpg',
+					Name: '2',
+					Size: 'S',
+					Color: '黑色',
+					Price: '1680.10',
+					Active: '0.1',
+					Count: '2',
+					Checked: 0
+				},
+				{
+					ImagePath: '/Content/Images/information/carClothDemo.jpg',
+					Name: '3',
+					Size: 'L',
+					Color: '蓝色',
+					Price: '10.00',
+					Active: '0.1',
+					Count: '3',
+					Checked: 0
+				},
+				{
+					ImagePath: '/Content/Images/information/carClothDemo.jpg',
+					Name: '4',
+					Size: 'M',
+					Color: '黑色',
+					Price: '1680.00',
+					Active: '0.5',
+					Count: '4',
+					Checked: 0
+				},
+				{
+					ImagePath: '/Content/Images/information/carClothDemo.jpg',
+					Name: '5',
+					Size: 'M',
+					Color: '黑色',
+					Price: '960.00',
+					Active: '0.1',
+					Count: '5',
+					Checked: 0
+				},
+				{
+					ImagePath: '/Content/Images/information/carClothDemo.jpg',
+					Name: '6',
+					Size: 'M',
+					Color: '黑色',
+					Price: '1870.00',
+					Active: '0.5',
+					Count: '6',
+					Checked: 0
+				},
+			]
+		},
+		computed: {
+			//选中商品总数量
+			totalCount: function() {
+				var totalCount = 0;
+				for(var i = 0; i < this.cloths.length; i++) {
+					if(this.cloths[i].Checked == 1) {
+						totalCount += parseInt(this.cloths[i].Count)
+					}
+				}
+				if(totalCount == 0) {
+					this.totalAllCheck =  0;
+					$('.totalAllCheck').addClass('totalUnCheck')
+				}
+				return totalCount;
+			},
+			//选中商品总价
+			totalPrice: function() {
+				var totalPrice = 0;
+				for(var i = 0; i < this.cloths.length; i++) {
+					if(this.cloths[i].Checked == 1) {
+						totalPrice += parseInt(this.cloths[i].Count) * parseFloat(this.cloths[i].Price) * parseFloat(this.cloths[i].Active)
+					}
+				}
+				return totalPrice;
+			},
+			//全选状态
+			totalAllCheck : function(){
+				var totalAllCheck = 1;
+				for(var i = 0; i < this.cloths.length; i++) {
+					totalAllCheck = this.cloths[i].Checked * totalAllCheck;
+				}
+				return totalAllCheck;
+			}
+		},
+		methods: {
+			checkedCloth: function(_this, index) {//单选商品
+				var oClothchecked;
+				var checked = this.cloths[index].Checked;
+				if(checked == 0) {
+					this.cloths[index].Checked = 1;
+				} else {
+					this.cloths[index].Checked = 0;
+					oClothchecked = false;
+				}
+			},
+			addNum: function(index) {
+				this.cloths[index].Count++;
+			},
+			cutNum: function(index) {
+				if(this.cloths[index].Count > 1) {
+					this.cloths[index].Count--;
+				}
+			},
+			minNum:function(_this,index){//商品最小数量限制
+				var val = $(_this.currentTarget).val();
+				if( this.cloths[index].Count < 1 ){
+					this.cloths[index].Count = 1;
+				}
+			},
+			AllChecked: function() {//全选按钮事件
+				if($('.totalAllCheck').attr('data-state') == 0 ) {
+					//全选
+					for(var i = 0; i < this.cloths.length; i++) {
+						this.cloths[i].Checked = 1;
+					}
+				} else {
+					//全不选
+					for(var i = 0; i < this.cloths.length; i++) {
+						this.cloths[i].Checked = 0;
+					}
+				}
+			},
+			delCloth: function(index) {//删除某件商品
+				this.cloths.splice(index, 1);
+			},
+			batchDelCloth: function() {//批量删除商品
+				var _this = this;
+				for(var i = 0; i < this.cloths.length; i++) {
+					if( this.cloths[i].Checked == 1 ){
+						layer.msg('确定将这些商品移出购物车么？', {
+							icon : 7,
+							time: 0, //不自动关闭
+//							title : '零时尚',
+							btn: ['是','否'], //按钮
+							yes:function(){
+								for(var i = 0, flag = false; i < _this.cloths.length; flag ? i++ : i) {
+									if(_this.cloths[i].Checked == 1) {
+										_this.cloths.splice(i, 1);
+										flag = false;
+									} else {
+										flag = true;
+									}
+								}
+								//回到顶部
+								$('.buyCarCloth .hasCloth').css('top',0)
+								layer.msg('删除成功', {icon : 1,time : 1500});
+							}
+						});
+						break;
+					}
+				}
+			},
+			sizeColorMouseEnter : function(_this,index){
+				$(_this.currentTarget).addClass('editingSizeColor')
+			},
+			sizeColorMouseLeave : function(_this,index){
+				if($(_this.currentTarget).hasClass('colorCancel')){
+					$(_this.currentTarget).parents('.sizeColor').removeClass('editingSizeColor');
+					$(_this.currentTarget).parents('.sizeColor').find('.sizeColorList').hide();
+				}else if($(_this.currentTarget).hasClass('sizeColor')){
+					$(_this.currentTarget).removeClass('editingSizeColor');
+					$(_this.currentTarget).find('.sizeColorList').hide();
+				}
+			},
+			sizeColorEdit : function(_this){
+				$(_this.currentTarget).siblings('.sizeColorList').show()
+			}
+		}
+	})
+</script>
 </html>
