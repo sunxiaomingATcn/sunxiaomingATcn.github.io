@@ -1,3 +1,3 @@
-function a(){
-	alert('a')
+var fna = function (){
+	alert('moduleA')
 }

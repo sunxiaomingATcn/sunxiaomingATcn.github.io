@@ -1,9 +1,9 @@
 
-define(['../../content/jquery-2.1.1.min.js'],function(){
+define(function(){
 	
 	return {
 		c:function(){
-			return alert($('body').attr('id'))
+			return alert('moduleC')
 		}
 	};
 })
