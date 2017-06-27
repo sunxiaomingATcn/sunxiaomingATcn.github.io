@@ -8,12 +8,12 @@
 		<link rel="stylesheet" href="css/swiper.css" />
 		<script src="js/swiper.min.js"></script>
 		<style>
+
 			body{
 				min-height: 100%;
 				position: relative;
 				background-image: url(img/bg_2x.png);
 				background-size:cover;
-				background-color:#000 ;
 			}
 			*{
 				margin: 0;
@@ -38,14 +38,9 @@
 				width: 100%;
 			}
 			.swiper-container{
-				height: 60%;
 				margin-bottom: 10%;
 			}
 			footer{
-				/*position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;*/
 				padding: 10% 0;
 				overflow: hidden;
 				border-top: 1px solid #FFF;
@@ -89,6 +84,7 @@
 		var mySwiper = new Swiper('.swiper-container', {
 			effect: 'coverflow',
 			slidesPerView: 2,
+			spaceBetween : 20,
 			centeredSlides: true,
 			coverflow: {
 				rotate: 30,
