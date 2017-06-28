@@ -21,7 +21,7 @@
 				<div class="cloth-td-head">总金额</div>
 				<div class="cloth-td-head">操作</div>
 			</div>
-			
+
 			<!--
             	作者：767694331@qq.com
             	时间：2017-05-28
@@ -29,14 +29,14 @@
             -->
 			<cloth-car :cloths=cloths></cloth-car>
 			<total-count :cloths=cloths></total-count>
-			
+
 		</div>
 		<div class="noCloth" v-else>
 			<img class="noClothImage" src="images/information/emptyBuyCar.png" />
 			<span class="noClothMsg">您的购物车是空的，快去<a href="#">挑选商品></a></span>
 		</div>
 	</div>
-	
+
 	<!--定义组件-->
 	<script type="text/x-template" id="cloth-car-tpl">
 		<div class="buyCarCloth">
@@ -78,27 +78,27 @@
 	</script>
 	<script type="text/x-template" id="totalCount-tpl">
 		<div class="totalCount">
-				<div class="totalAllCheck" v-bind:data-state=totalAllCheck v-on:click=AllChecked()>
-					<img class="totalAllchecked" src="images/information/buyCarNoCheaked.png" />
-					<img v-if=totalAllCheck class="totalAllUnChecked" src="images/information/buyCarClothChecked.png" />
-					<span>{{ totalAllCheck ?'全不选':'全选' }}</span>
-				</div>
-				<div class="goBuy">
-					下单
-				</div>
-				<div class="batchDelCloth" v-on:click=batchDelCloth()>
-					删除
-				</div>
-				<div class="totalPrice">
-					合计
-					<span>{{ totalPrice }}</span>
-				</div>
-				<div class="clothCount">
-					已选商品
-					<span>{{ totalCount }}</span> 件
-				</div>
-
+			<div class="totalAllCheck" v-bind:data-state=totalAllCheck v-on:click=AllChecked()>
+				<img class="totalAllchecked" src="images/information/buyCarNoCheaked.png" />
+				<img v-if=totalAllCheck class="totalAllUnChecked" src="images/information/buyCarClothChecked.png" />
+				<span>{{ totalAllCheck ?'全不选':'全选' }}</span>
 			</div>
+			<div class="goBuy">
+				下单
+			</div>
+			<div class="batchDelCloth" v-on:click=batchDelCloth()>
+				删除
+			</div>
+			<div class="totalPrice">
+				合计
+				<span>{{ totalPrice }}</span>
+			</div>
+			<div class="clothCount">
+				已选商品
+				<span>{{ totalCount }}</span> 件
+			</div>
+
+		</div>
 	</script>
 	<script>
 		//注册组件
@@ -150,10 +150,10 @@
 				}
 			}
 		})
-		
-		Vue.component('total-count',{
-			template:'#totalCount-tpl',
-			props:['cloths'],
+
+		Vue.component('total-count', {
+			template: '#totalCount-tpl',
+			props: ['cloths'],
 			computed: {
 				//选中商品总数量
 				totalCount: function() {
@@ -188,7 +188,7 @@
 					return totalAllCheck;
 				}
 			},
-			methods:{
+			methods: {
 				AllChecked: function() { //全选按钮事件
 					if($('.totalAllCheck').attr('data-state') == 0) {
 						//全选
@@ -235,11 +235,8 @@
 				}
 
 			}
-			})
-		
-		
-		
-		
+		})
+
 		var buyCar = new Vue({
 			el: "#buyCarBox",
 			data: {
@@ -276,8 +273,7 @@
 					}
 				]
 			},
-			
-			
+
 		})
 	</script>
 
