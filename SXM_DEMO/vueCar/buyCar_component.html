@@ -62,14 +62,14 @@
 							<div>{{ ocloth.Size }}</div>
 							<div>{{ ocloth.Color }}</div>
 						</div>
-						<div class="cloth-td clothPrice">{{ ocloth.Price }}</div>
+						<div class="cloth-td clothPrice">{{ocloth.Price | currency}}</div>
 						<div class="cloth-td clothActive">{{ ocloth.Active }}</div>
 						<div class="cloth-td clothAddCut">
 							<span v-on:click=cutNum(index)> - </span>
 							<input type="number" :value=ocloth.Count v-model=ocloth.Count v-on:keyup=minNum($event,index) />
 							<span v-on:click=addNum(index)> + </span>
 						</div>
-						<div class="cloth-td">{{ ocloth.Count * ocloth.Price * ocloth.Active }}</div>
+						<div class="cloth-td">{{ ocloth.Count * ocloth.Price * ocloth.Active | currency }}</div>
 						<div class="cloth-td"><img class="delCloth" title="删除" v-on:click=delCloth(index) src="images/information/delIcon.png" /></div>
 					</li>
 				</ul>
@@ -91,7 +91,7 @@
 			</div>
 			<div class="totalPrice">
 				合计
-				<span>{{ totalPrice }}</span>
+				<span>{{ totalPrice | currency }}</span>
 			</div>
 			<div class="clothCount">
 				已选商品
@@ -174,7 +174,7 @@
 					var totalPrice = 0;
 					for(var i = 0; i < this.cloths.length; i++) {
 						if(this.cloths[i].Checked == 1) {
-							totalPrice += parseInt(this.cloths[i].Count) * parseFloat(this.cloths[i].Price) * parseFloat(this.cloths[i].Active)
+							totalPrice += parseInt(this.cloths[i].Count) * this.cloths[i].Price * this.cloths[i].Active
 						}
 					}
 					return totalPrice;
@@ -188,6 +188,7 @@
 					return totalAllCheck;
 				}
 			},
+
 			methods: {
 				AllChecked: function() { //全选按钮事件
 					if($('.totalAllCheck').attr('data-state') == 0) {
@@ -236,7 +237,12 @@
 
 			}
 		})
+		//自定义货币过滤器(2.0版本的Vue删除了预置的过滤器）
+		Vue.filter('currency', function(value) {
+			return parseFloat(value).toFixed(2)
+		})
 
+		//实例化
 		var buyCar = new Vue({
 			el: "#buyCarBox",
 			data: {
@@ -246,7 +252,7 @@
 						Name: '1',
 						Size: 'M',
 						Color: '黑色',
-						Price: '1680.00',
+						Price: '1680.001',
 						Active: '0.5',
 						Count: '1',
 						Checked: 0,
@@ -258,7 +264,7 @@
 						Color: '黑色',
 						Price: '1680.10',
 						Active: '0.1',
-						Count: '2',
+						Count: '5',
 						Checked: 0
 					},
 					{
