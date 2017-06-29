@@ -103,7 +103,7 @@
 		<script>
 			var userAgent = window.navigator.userAgent.toLowerCase();
 			alert(userAgent)
-			if(userAgent.indexOf('micromessenger') > -1 && userAgent.indexOf('Android') > -1 ) {
+			if(userAgent.indexOf('micromessenger') > -1 && userAgent.toLowerCase().indexOf('android') > -1 ) {
 				document.getElementById('isWX').style.display = "block"
 			}
 			document.getElementById('closeWXzz').onclick = function() {
