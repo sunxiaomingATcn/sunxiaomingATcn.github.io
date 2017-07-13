@@ -63,7 +63,7 @@
 	</head>
 
 	<body>
-		
+		<div style="overflow: hidden;">
 		<div class="page page1" id="page1">
 			<div class="container">
 				<h3>点击事件触发轮播</h3>
@@ -93,6 +93,10 @@
 					<br /> )
 				</p>-->
 			</div>
+		</div>
+		</div>
+		<div>
+			<a href="https://github.com/sunxiaomingATcn/sunxiaomingATcn.github.io/tree/master/SXM_DEMO/carousel">插件地址</a>
 		</div>
 	</body>
 	<script src="carousel.js"></script>
@@ -140,10 +144,10 @@
 			'images/carousel/8.png', 
 			'images/carousel/9.png', 
 		], //图片数组
-		constructor: '.page2', //图片容器
+		constructor: '.page2', //图片容器，该容器必须定义宽高，也可传值
 		width : 500,//图片容器大小
-		height : 590,
-		intervalTime: '3000' //切换间隔
+		height : 590,//图片容器大小为必须值
+		intervalTime: '3000' //切换间隔，默认5s
 	})
 	carousel2.initLoadImage();
 

@@ -7,6 +7,7 @@ var readImage = function(data) {
 			this.maxNum = data.maxNum;
 			this.currentPage = null;
 			this.ImageBase64Arr = [];
+			this.fileId = data.id || 'FileReaderInput'+ new Date().getTime()
 		}
 		readImage.prototype.init = function() {
 			var _this = this;
@@ -17,6 +18,7 @@ var readImage = function(data) {
 			uploadDiv.className = 'addImage';
 			uploadInput.type = 'file';
 			uploadInput.style.display = 'none';
+			uploadInput.id = this.fileId;
 			uploadInput.accept = this.filterImageType.join(',');
 			if(this.Multiselect) {
 				uploadInput.multiple = 'multiple';

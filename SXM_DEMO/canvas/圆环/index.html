@@ -5,13 +5,12 @@
 		<title></title>
 	</head>
 	<body>
-		<canvas id="canvas" width="300" height="300"></canvas>
+		<canvas id="canvas" width="200" height="200"></canvas>
+		<canvas id="canvas1" width="200" height="200"></canvas>
 	</body>
 	<script>
 		var canvas = document.getElementById('canvas');
-		canvas.width = 900;
-		canvas.height = 900;
-		var paintbrush = canvas.getContext('2d');  
+
 		// 将绘图区域清空,如果是第一次在这个画布上画图,画布上没有东西,这步就不需要了  
 //      paintbrush.clearRect(0, 0, 48, 48);  
 //        
@@ -31,16 +30,66 @@
 //       paintbrush.closePath();  
 //      paintbrush.fillStyle = 'rgba(0,0,0,1)';  
 //       paintbrush.fill();  //填充
-            // ***灰色的圆画完  
-                context = paintbrush
-                context.beginPath();
+// ***灰色的圆画完  
+//              context = paintbrush
+//              context.beginPath();
+//              
+//              //context.lineCap = "round";
+//                context.lineWidth = 5;
+//                context.strokeStyle = "rgba(0, 0, 0, 1)";
+//              context.arc(300, 300, 200, 0, Math.PI , true);
+//              context.stroke();//画线条
+//              context.closePath();
+//context.restore();
                 
-                //context.lineCap = "round";
-                  context.lineWidth = 5;
-                  context.strokeStyle = "rgba(0, 0, 0, 1)";
-                context.arc(300, 300, 200, 0, Math.PI , true);
-                context.stroke();//画线条
-                context.closePath();
-                //context.restore();
-	</script>
+
+
+	var cW = 200;
+	canvas.width = cW;
+	canvas.height = cW;
+	animateArc(canvas,50);
+	
+	var canvas1 = document.getElementById('canvas1');
+	animateArc(canvas1,85);
+	
+	function animateArc(canvas,percentage,color) {
+		var paintBrush = canvas.getContext('2d');
+		
+			
+		var init = Math.PI;
+		var start = Math.PI;
+		var end =  Math.PI + (Math.PI * percentage * 3.6 / 180);
+		canvas.timer = setInterval(function() {
+			start += 0.1;
+			if(start >= end) {
+				clearInterval(canvas.timer)
+				 paintBrush.font = "30px Courier New";
+			    //设置字体填充颜色
+			    paintBrush.fillStyle = "blue";
+			    //从坐标点开始绘制文字
+			    paintBrush.fillText(percentage + "%", 70, 110);
+			    return;
+			}
+			paintBrush.clearRect(0, 0, 200, 200)
+			paintBrush.beginPath();
+			paintBrush.strokeStyle = 'rgba(0,0,0,.2)';
+			paintBrush.lineCap = "round";
+	        paintBrush.lineWidth = 10;
+			
+			paintBrush.arc(100, 100, 50, 0, 2*Math.PI, false);
+			paintBrush.stroke();
+			paintBrush.closePath();
+		
+			paintBrush.beginPath();
+			paintBrush.lineCap = "round";
+			paintBrush.lineWidth = 10;
+			paintBrush.strokeStyle = color || 'blue';
+			paintBrush.arc(100, 100, 50, init, start, false);
+			paintBrush.stroke();
+			paintBrush.closePath();
+			
+			
+		}, 20)
+	}
+</script>
 </html>
