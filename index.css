@@ -163,7 +163,7 @@ a{
 	transform: translateX(300px);	
 }
 .page3Animate .animate-show-up{
-	animation: show-up 2s;
+	animation: show-up 1.2s;
     animation-fill-mode: forwards;
 }
 .my-emial{
@@ -193,6 +193,11 @@ span.animate-show-up{
 .page3Animate .animateDelay7{
 	animation-delay: 3.5s;
 }
+
+.Remarks{
+	text-align: center;
+}
+
 
 @-webkit-keyframes buzz-out {
   0% {
