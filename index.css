@@ -128,20 +128,90 @@ a{
 	color: #FFF;
 	text-align: center;
 }
-.one-work-inside .work-inside-des span{
-	vertical-align: middle;
+.one-work-inside .work-inside-des p:nth-child(1){
+	margin-top: 40%;
+	font-size: 16px;
 }
-.work-inside-des:after {
-        display:inline-block;
-        width:0;
-        height:100%;
-        vertical-align:middle;
-        content:"";
-    }
+.one-work-inside .work-inside-des p:nth-child(2){
+	margin-top: 10px;
+	font-size: 12px;
+}
+.page3{
+	background: #54b3a5;
+}
+.page3 h1{
+    margin: 50px auto;
+    text-align: center;
+}
+.my-msg{
+	margin :40px auto;
+	width: 400px;
+}
+.call-me{
+	display: inline-block;
+	vertical-align: middle;
+	width: 30px;
+	margin-left: 10px;
+	cursor: pointer;
+	animation-name: buzz-out;
+    animation-duration: 0.75s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.animate-show-up{
+	opacity: 0;
+	transform: translateX(300px);	
+}
+.page3Animate .animate-show-up{
+	animation: show-up 2s;
+    animation-fill-mode: forwards;
+}
+.my-emial{
+	opacity: 0;
+}
+span.animate-show-up{
+	display: inline-block;
+}
+.page3Animate .animateDelay1{
+	animation-delay: .5s;
+}
+.page3Animate .animateDelay2{
+	animation-delay: 1s;
+}
+.page3Animate .animateDelay3{
+	animation-delay: 1.5s;
+}
+.page3Animate .animateDelay4{
+	animation-delay: 2s;
+}
+.page3Animate .animateDelay5{
+	animation-delay: 2.5s;
+}
+.page3Animate .animateDelay6{
+	animation-delay: 3s;
+}
+.page3Animate .animateDelay7{
+	animation-delay: 3.5s;
+}
 
-
-
-
+@-webkit-keyframes buzz-out {
+  0% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+@keyframes show-up{
+	from{
+		transform: translateX(300px);
+		opacity: 0;
+	}
+	to{
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
 @media only screen and (min-width : 1000px){
 	.page2 .myWorks{
 		width: 980px;

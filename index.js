@@ -87,4 +87,18 @@ $(function(){
 	
 	$('.one-work').followMouse('.work-inside-des')
 	
+	
+	$('.call-me').click(function(){
+		$('.my-emial').addClass('animate-show-up')
+	})
+	$(window).scroll(function(){
+		var onPage1 = $('.page1').offset().top-$('body').scrollTop();
+		var onPage2 = $('.page2').offset().top-$('body').scrollTop();
+		var onPage3 = $('.page3').offset().top-$('body').scrollTop();
+		if(onPage3 <= 5 ){
+			$('.page3').addClass('page3Animate')
+		}else{
+			$('.page3Animate').removeClass('page3Animate')
+		}
+	})
 })
