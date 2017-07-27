@@ -265,4 +265,8 @@ span.animate-show-up{
 	z-index: 10000;
 	width: 100%;
 	box-sizing: border-box;
+	position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
 }
