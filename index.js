@@ -92,9 +92,9 @@ $(function(){
 		$('.my-emial').addClass('animate-show-up')
 	})
 	$(window).on('scroll touchend',function(){
-		var onPage1 = $('.page1').offset().top-$('body').scrollTop();
-		var onPage2 = $('.page2').offset().top-$('body').scrollTop();
-		var onPage3 = $('.page3').offset().top-$('body').scrollTop();
+		var onPage1 = $('.page1').offset().top-$(window).scrollTop();
+		var onPage2 = $('.page2').offset().top-$(window).scrollTop();
+		var onPage3 = $('.page3').offset().top-$(window).scrollTop();
 		if(onPage3 <= 5 ){
 			$('.page3').addClass('page3Animate')
 		}else{
