@@ -91,7 +91,7 @@ $(function(){
 	$('.call-me').click(function(){
 		$('.my-emial').addClass('animate-show-up')
 	})
-	$(window).scroll(function(){
+	$(window).on('scroll touchend',function(){
 		var onPage1 = $('.page1').offset().top-$('body').scrollTop();
 		var onPage2 = $('.page2').offset().top-$('body').scrollTop();
 		var onPage3 = $('.page3').offset().top-$('body').scrollTop();
