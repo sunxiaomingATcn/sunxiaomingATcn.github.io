@@ -1,11 +1,12 @@
 @font-face {
-    font-family: 'Uni Tortred';
+    font-family: 'UniTortred';
     src: url('content/UniTortred.ttf');
     
     font-weight: normal;
     font-style: normal;
  
 }
+
 *{
 	margin: 0;
 	padding: 0;
@@ -53,12 +54,11 @@ a{
 	overflow: hidden;
 }
 .page1 .website-title{
-	font-family: "Uni Tortred";
+	font-family: "UniTortred";
 	text-align: center;
 	font-size: 40px;
 }
 .page1 .web-developer-describe{
-	font-family: "Uni Tortred";
 	height: 30px;
 	margin: 50px 0;
 	text-align: center;
@@ -89,36 +89,36 @@ a{
 
 
 
-.page2{
-	background: #FFF;
+.my-achievements{
+	background: #EBDCD5;
 	padding-bottom: 30px;
 }
-.page2 h1{
-	color: #aaa;
+.my-achievements h1{
+	color: #FFF;
+	text-shadow: 0 0 3px #000;
 	margin: 50px auto;
 	text-align: center;
 }
-.page2 .myWorks{
+.my-achievements .myWorks{
 	max-width:1200px;
 	margin: 0 auto;
 	overflow: hidden;
 }
-.page2 .myWorks .one-work{
-	background: #FFF;
+.my-achievements .myWorks .one-work{
 	float: left;
 	box-sizing: border-box;
 	padding: 10px;
 }
-.page2 .myWorks .one-work .one-work-inside{
+.my-achievements .myWorks .one-work .one-work-inside{
 	padding-bottom:100%;
 	position: relative;
 	overflow: hidden;
 }
-.page2 .myWorks .one-work .one-work-inside img{
+.my-achievements .myWorks .one-work .one-work-inside img{
 	height: 100%;
 	position: absolute;
 }
-.page2 .myWorks .one-work .one-work-inside .work-inside-des{
+.my-achievements .myWorks .one-work .one-work-inside .work-inside-des{
 	position: absolute;
 	top: 0;
 	left: -100%;
@@ -136,10 +136,10 @@ a{
 	margin-top: 10px;
 	font-size: 12px;
 }
-.page3{
+.pageContactMe{
 	background: #54b3a5;
 }
-.page3 h1{
+.pageContactMe h1{
     margin: 50px auto;
     text-align: center;
 }
@@ -162,41 +162,63 @@ a{
 	opacity: 0;
 	transform: translateX(300px);	
 }
-.page3Animate .animate-show-up{
+.animate-show .animate-show-up{
 	animation: show-up 1.2s;
     animation-fill-mode: forwards;
 }
+.animate-show-callback .animate-show-up{
+	animation: show-down 1.2s;
+    animation-fill-mode: forwards;
+}
+
 .my-emial{
 	opacity: 0;
 }
 span.animate-show-up{
 	display: inline-block;
 }
-.page3Animate .animateDelay1{
+.animate-show .animateDelay1{
 	animation-delay: .5s;
 }
-.page3Animate .animateDelay2{
+.animate-show .animateDelay2{
 	animation-delay: 1s;
 }
-.page3Animate .animateDelay3{
+.animate-show .animateDelay3{
 	animation-delay: 1.5s;
 }
-.page3Animate .animateDelay4{
+.animate-show .animateDelay4{
 	animation-delay: 2s;
 }
-.page3Animate .animateDelay5{
+.animate-show .animateDelay5{
 	animation-delay: 2.5s;
 }
-.page3Animate .animateDelay6{
+.animate-show .animateDelay6{
 	animation-delay: 3s;
 }
-.page3Animate .animateDelay7{
+.animate-show .animateDelay7{
 	animation-delay: 3.5s;
 }
 
 .Remarks{
 	text-align: center;
 }
+
+.my-Skill{
+	background: #7187C7;
+}
+.my-Skill h1{
+	text-shadow: 0 0 3px #000;
+    margin: 50px auto;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
 
 
 @-webkit-keyframes buzz-out {
@@ -213,34 +235,44 @@ span.animate-show-up{
 		opacity: 0;
 	}
 	to{
-		transform: translateY(0);
+		transform: translateX(0);
 		opacity: 1;
 	}
 }
+@keyframes show-down{
+	from{
+		transform: translateX(0);
+		opacity: 1;
+	}
+	to{
+		transform: translateX(300px);
+		opacity: 0;
+	}
+}
 @media only screen and (min-width : 1000px){
-	.page2 .myWorks{
+	.my-achievements .myWorks{
 		width: 980px;
 	}
-	.page2 .myWorks .one-work{
-		width: 25%;
+	.my-achievements .myWorks .one-work{
+		width: 20%;
 	}
 }
 @media only screen and (min-width: 640px) and (max-width : 1000px){
-	.page2 .myWorks{
+	.my-achievements .myWorks{
 		width: 800px;
 	}
-	.page2 .myWorks .one-work{
-		width: 25%;
+	.my-achievements .myWorks .one-work{
+		width: 20%;
 	}
 	.my-msg{
 		width: 90%;
 	}
 }
 @media only screen and (max-width: 640px) {
-	.page2 .myWorks{
+	.my-achievements .myWorks{
 		width: 80%;
 	}
-	.page2 .myWorks .one-work{
+	.my-achievements .myWorks .one-work{
 		width: 50%;
 	}
 	.my-msg{

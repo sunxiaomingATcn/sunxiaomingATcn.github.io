@@ -82,9 +82,9 @@ $(function(){
 	
 	
 	$('.myWorksTitle').click(function(){
-		$('.page2').scrollAppoint()
+		$('.my-achievements').scrollAppoint()
 	})
-	
+	//鼠标跟随效果
 	$('.one-work').followMouse('.work-inside-des')
 	
 	
@@ -93,8 +93,9 @@ $(function(){
 	})
 	$(window).on('scroll touchend',function(){
 
-		var onPage3 = $('.page3').offset().top-$(window).scrollTop();
-		onPage3 <= 5 ? $('.page3').addClass('page3Animate'):$('.page3Animate').removeClass('page3Animate')
+		var onPage3 = $('.pageContactMe').offset().top-$(window).scrollTop();
+		onPage3 <= 5 ? $('.pageContactMe').addClass('animate-show').removeClass('animate-show-callback'):$('.pageContactMe').addClass('animate-show-callback').removeClass('animate-show')
+		
 		
 	})
 })
