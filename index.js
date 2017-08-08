@@ -34,40 +34,38 @@ $.fn.extend({
 			var x = (e.pageX - $(this).offset().left - (w / 2)) * (w > h ? (h / w) : 1);
 			var y = (e.pageY - $(this).offset().top - (h / 2)) * (h > w ? (w / h) : 1);
 			var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4;
-		
+			var targettop,targetleft;
+			switch(direction) {
+				case 0: //上方
+						targettop = -h
+						targetleft =  0
+					break;
+				case 1: //右侧
+						targettop = 0
+						targetleft = w
+					
+					break;
+				case 2: //下方
+						targettop =  h
+						targetleft = 0
+					
+					break;
+				case 3: //左侧
+						targettop =  0
+						targetleft = -w
+					break;
+			}
 			if(e.type == 'mouseenter') {
 				$(this).find('img').css({
 					'transform': 'scale(1.1,1.1)',
 					'transition': '1s all'
 				});
-				switch(direction) {
-					case 0: //上方
-						$(this).find(MouseElement).css({
-							'top': -h,
-							left: 0
-						});
-						break;
-					case 1: //右侧
-						$(this).find(MouseElement).css({
-							'top': 0,
-							left: w
-						});
-						break;
-					case 2: //下方
-						$(this).find(MouseElement).css({
-							'top': h,
-							left: 0
-						});
-						break;
-					case 3: //左侧
-						$(this).find(MouseElement).css({
-							'top': 0,
-							left: -w
-						});
-						break;
-				}
+				$(this).find(MouseElement).css({
+					top : targettop ,
+					left : targetleft
+				});
 				$(this).find(MouseElement).animate({
-					'top': 0,
+					top: 0,
 					left: 0
 				}, timeInterval)
 			} else {
@@ -75,33 +73,10 @@ $.fn.extend({
 					'transform': 'scale(1,1)',
 					'transition': '1s all'
 				});
-				switch(direction) {
-					case 0: //上方
-						$(this).find(MouseElement).animate({
-							'top': -h,
-							left: 0
-						}, timeInterval);
-						break;
-					case 1: //右侧
-						$(this).find(MouseElement).animate({
-							'top': 0,
-							left: w
-						}, timeInterval);
-						break;
-					case 2: //下方
-						$(this).find(MouseElement).animate({
-							'top': h,
-							left: 0
-						}, timeInterval);
-						break;
-					case 3: //左侧
-						$(this).find(MouseElement).animate({
-							'top': 0,
-							left: -w
-						}, timeInterval);
-						break;
-				}
-
+				$(this).find(MouseElement).animate({
+					top: targettop,
+					left: targetleft
+				}, timeInterval);
 			}
 
 		})
@@ -145,9 +120,9 @@ $(function() {
 	var hearts = [];
 	var mouseMoved = false;
 	onResize();
-	//window.addEventListener("mousemove", onMove);
-	//window.addEventListener("touchmove", onMove);
-	//window.addEventListener("resize", onResize);
+	window.addEventListener("mousemove", onMove);
+	window.addEventListener("touchmove", onMove);
+	window.addEventListener("resize", onResize);
 	requestAnimationFrame(render);
 
 	function onResize() {
