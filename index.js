@@ -19,7 +19,8 @@ $.fn.extend({
 	scrollAppoint: function(timeInterval) {
 		timeInterval = timeInterval || 500
 		var scrollTop = $(this).offset().top
-		$('body').animate({
+		//兼容火狐
+		$('html,body').animate({
 			'scrollTop': scrollTop
 		}, timeInterval)
 	},
@@ -85,7 +86,10 @@ $.fn.extend({
 })
 
 $(function() {
-	$('.loading-box').fadeOut()
+	imageLoaded(function(){
+		$('.loading-box').fadeOut()
+	})
+	
 	//打印效果
 	$('.web-developer-describe').typing('Talk is cheap , show me the code', 100);
 
@@ -202,3 +206,16 @@ $(function() {
 	
 	
 })
+
+
+//所有图片加载完成
+function imageLoaded(fn){
+	var totalImg = $('img').length;
+    var currentImg = 0;
+    $('img').on('load',function(){
+	    currentImg++;
+	    if(currentImg === totalImg){
+			if(fn)fn()
+	    }
+   })
+}
