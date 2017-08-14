@@ -85,6 +85,7 @@ $.fn.extend({
 })
 
 $(function() {
+	$('.loading-box').fadeOut()
 	//打印效果
 	$('.web-developer-describe').typing('Talk is cheap , show me the code', 100);
 

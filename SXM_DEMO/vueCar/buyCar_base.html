@@ -69,11 +69,11 @@
 				<div class="batchDelCloth" v-on:click=batchDelCloth()>
 					删除
 				</div>
-				<div class="totalPrice">
+				<div class="totalPrice" >
 					合计
 					<span>{{ totalPrice }}</span>
 				</div>
-				<div class="clothCount">
+				<div class="clothCount" v-on:click="a()">
 					已选商品
 					<span>{{ totalCount }}</span> 件
 				</div>
@@ -85,7 +85,7 @@
 		</div>
 	</div>
 <script>
-	
+
 		var buyCar = new Vue({
 		el: "#buyCarBox",
 		data: {
@@ -238,7 +238,8 @@
 			},
 			sizeColorEdit : function(_this){
 				$(_this.currentTarget).siblings('.sizeColorList').show()
-			}
+			},
+			
 		}
 	})
 </script>

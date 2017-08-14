@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>建行送祝福</title>
+		<link rel="stylesheet" type="text/css" href="css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+
+		<script src="js/zepto.min.js"></script>		
+	</head>
+	
+	<body style="height: 100%;">
+		<section class="dzp">
+			<section class="logobanner">
+				<img src="img/banklogo.png" class="logo"/>
+				<img src="img/friendshare.png" class="friendshare animated slideInLeft"/>
+			</section>
+			<section class="lottery">
+				<img src="img/zhuanpan.png" class="lottery-pan" id="lottery_pan" alt="图片丢失"/>
+				<img src="img/arrow.png" class="arrow" alt="图片丢失" id="arrow"/>
+				<span class="begin-lottery-btn" id="begin_lottery_btn"></span>
+				<section class="monkey">
+					<img src="img/monkey.png"  />
+				</section>
+				<section class="surprise animated bounce infinite">
+					<a href="javascript:;"><img src="img/surprise.png" /></a>
+				</section>
+			</section>
+			
+			<section class="moregift">
+				<a href="javascript:;"><img src="img/giftbtn.png" /></a>
+			</section>
+			<section class="text"><a href="javascript:;">四川建行送你一个神秘大礼包，点击获取噢</a></section>
+			<a href="javascript:;" class="lottery-history">查看中奖记录</a>			
+			<section class="bg" id="bg" hidden></section>
+			<section class="lottery-win" id="lottery_win" hidden>
+				<a href="javascript:;" class="close" id="lottery_win_close"></a>
+				<img src="img/lotterywin.png" alt="图片丢失"/>
+			</section>
+			<section class="lottery-fail" id="lottery_fail" hidden>
+				<a href="javascript:;" class="close" id="lottery_fail_close"></a>
+				<img src="img/lotteryfail.png" alt="图片丢失"/>
+			</section>
+		</section>		
+	</body>
+
+	<script type="text/javascript">
+		(function(w,d){
+			function htmlFontsize(){
+				d.documentElement.style.fontSize=20*d.documentElement.clientWidth/320+'px';
+			}
+			window.addEventListener('resize',htmlFontsize,false);
+			htmlFontsize();
+		})(window,document);	   		
+	</script>
+<script src="js/index.js"></script>
+</html>
