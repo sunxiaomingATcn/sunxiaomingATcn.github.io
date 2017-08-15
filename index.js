@@ -219,3 +219,8 @@ function imageLoaded(fn){
 	    }
    })
 }
+
+
+
+
+console.log("提示：建议您使用chrome浏览器")
