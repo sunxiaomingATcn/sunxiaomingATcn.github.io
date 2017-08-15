@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+	#div{
+	width: 400px;
+	min-height: 100px;
+	max-height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 3px;
+	outline: 0;
+	border: 1px solid #a0b3d6;
+	font-size: 12px;
+	word-wrap: break-word;
+	overflow-x: hidden;
+	overflow-y: auto; 
+	}
+
+			#son{
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+				vertical-align: middle;
+				background: #000;
+			}
+			.cz{
+				width: 0px;
+				height: 100%;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div">
+			<div class="cz"></div>
+			<div id="son"></div>
+		</div>
+	</body>
+	<script>
+		var fn= function() {
+	       console.log('hello world');
+		}
+		fn(); 
+		function fn() {
+	       console.log('hello');
+		}
+		fn()
+
+	</script>
+</html>
+

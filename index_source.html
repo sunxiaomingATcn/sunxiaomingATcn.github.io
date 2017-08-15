@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="keywords" content="Web Developer,前端小透明">
+		<meta name="description" content="Web Developer Ming,前端小透明">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>前端小透明-Web Developer Ming</title>
+		<link rel="shortcut icon" href="content/icon/title.jpg" />
+		<link rel="stylesheet" href="scripts/css/index.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?21fb4b6e622d86215a420d672fd75a9a";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+
+		
+
+	</head>
+
+	<body>
+		
+			<div class="bg_con" >
+				<input id="checked_1" type="checkbox" class="switch" v-model="switch" />
+				<label for="checked_1"></label>
+			</div>
+		
+		<div class="loading-box">
+			<div class="item-inner">
+				<div class="item-loader-container">
+					<div class="la-square-jelly-box la-2x">
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+			<div class="item-title">
+			</div>
+		</div>
+		<div class="pageContainer" id="pageContainer">
+			<div class="page page1" id="page1">
+				<canvas id="canvasHeart"></canvas>
+				<div class="container">
+					<h1 class="website-title">{{ content.title }}</h1>
+					<h4 class="web-developer-describe"></h4>
+					<p class="Remarks">{{ content.tips }}</p>
+					<div class="my-des">
+						<a class="myWorksTitle">{{ content.clickWorks }}</a>
+					</div>
+				</div>
+			</div>
+			<div class="page my-achievements">
+				<h1>{{ content.myworksTitle }}</h1>
+				<div class="myWorks">
+					<div class="one-work" v-for="onework in content.works" >
+						<div class="one-work-inside">
+							<img :src=onework.bgimage />
+							<a class="work-inside-des" target="_blank" :href=onework.href>
+								<p>{{ onework.title }}</p>
+								<p>{{ onework.des }}</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<div class="page my-Skill">
+			<h1>我的技能</h1>
+		</div>-->
+			<div class="page pageContactMe">
+				<h1>{{ content.mymessageTile }}</h1>
+				<div class="my-msg" v-for="(onemessage,index) in content.messages"><span>{{ onemessage.title }}：</span><span class="animate-show-up" :class=onemessage.classname >{{ onemessage.answer }}</span></div>
+{{Language}}
+
+			</div>
+		</div>
+		<script src="content/script/jquery-2.1.1.min.js"></script>
+		<script src="content/script/vue.min.js"></script>
+		<script src="scripts/js/index.js"></script>
+	</body>
+
+</html>
