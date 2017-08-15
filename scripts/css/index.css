@@ -54,7 +54,7 @@ a {
 }
 
 .page1 {
-	background-image: url(content/images/bg.jpg);
+	background-image: url(../../content/images/bg.jpg);
 	background-attachment: fixed;
 	background-size: cover;
 	width: 100%;
