@@ -8,7 +8,7 @@
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 		<title>前端小透明-Web Developer Ming</title>
 		<link rel="shortcut icon" href="content/icon/title.jpg" />
-		<link rel="stylesheet" href="scripts/dist/index-621ca9f715.css" />
+		<link rel="stylesheet" href="scripts/dist/index-faea6b7c7b.css" />
 		<script>
 			var _hmt = _hmt || [];
 			(function() {
@@ -19,12 +19,15 @@
 			})();
 		</script>
 
-		<script src="scripts/js/jquery-2.1.1.min.js"></script>
-		<script src="scripts/dist/index-60184953c4.js"></script>
 		
+
 	</head>
 
 	<body>
+		
+			
+			
+		
 		<div class="loading-box">
 			<div class="item-inner">
 				<div class="item-loader-container">
@@ -37,136 +40,51 @@
 			<div class="item-title">
 			</div>
 		</div>
-		
-		<div class="page page1" id="page1">
-			<canvas id="canvasHeart"></canvas>
-			<div class="container">
-				<h1 class="website-title">Web Developer Ming </h1>
-				<h4 class="web-developer-describe"></h4>
-				<p class="Remarks">暂时比较简陋，正在完善中~</p>
-				<div class="my-des">
-					<a class="myWorksTitle">我的作品</a>
-				</div>
+		<div class="pageContainer" id="pageContainer">
+			<!--语言切换-->
+			<div class="bg_con">
+				<input id="checked_1" type="checkbox" class="switch" v-model="switchs" />
+				<label for="checked_1"></label>
 			</div>
-		</div>
-		<div class="page my-achievements">
-			<h1>我的作品</h1>
-			<div class="myWorks">
-				<div class="one-work">
-					<div class="one-work-inside">
-						<img src="content/images/computer1.png" />
-						<a class="work-inside-des" target="_blank" href="https://www.0-fashion.com/">
-							<p>零时尚官网</p>
-							<p>企业在线官网</p>
-						</a>
-					</div>
-				</div>
-				<div class="one-work">
-					<div class="one-work-inside">
-						<img src="content/images/computer2.png" />
-						<a class="work-inside-des" target="_blank" href="https://mall.0-fashion.com/">
-							<p>零时尚网上商城</p>
-							<p>电商类网站</p>
-						</a>
-						
-					</div>
-				</div>
-				<div class="one-work">
-					<div class="one-work-inside"><img src="content/images/computer3.png" />
-					<a class="work-inside-des" target="_blank" href="https://oa.0-fashion.com">
-							<p>小蝶扫码</p>
-							<p>工具APP官网</p>
-						</a>
-					</div>
-				</div>
-				<div class="one-work">
-					<div class="one-work-inside"><img src="content/images/computer4.png" />
-					<a class="work-inside-des" target="_blank" href="SXM_DEMO/vueCar/buyCar_component.html">
-							<p>Vue购物车</p>
-							<p>用Vue组件写的购物车</p>
-						</a>
-					</div>
-				</div>
-				<div class="one-work">
-					<div class="one-work-inside">
-						<img src="content/images/computer5.png" />
-						<a class="work-inside-des" target="_blank" href="https://github.com/sunxiaomingATcn/h5APP_LSS">
-							<p>Hybrid APP</p>
-							<p>Hbuilder开发混合应用</p>
-						</a>
-					</div>
-				</div>
-				
-				<div class="one-work">
-					<div class="one-work-inside"><img src="content/images/computer6.png" />
-						<a class="work-inside-des" target="_blank" href="https://github.com/sunxiaomingATcn/sunxiaomingATcn.github.io/tree/master/SXM_DEMO/nodejs">
-							<p>NodeJs爬虫</p>
-							<p>用NodeJS写的小爬虫demo</p>
-						</a>
-					</div>
-				</div>
-				<div class="one-work">
-					<div class="one-work-inside">
-						<img src="content/images/computer7.png" />
-						<a class="work-inside-des" target="_blank" href="SXM_DEMO/carousel/carousel.html">
-							<p>JS原生图片轮播插件</p>
-							<p>用原生js开发的幻灯片插件</p>
-						</a>
-					</div>
-				</div>
-				
-				<div class="one-work">
-					<div class="one-work-inside"><img src="content/images/computer8.png" />
-					<a class="work-inside-des" target="_blank" href="SXM_DEMO/fileReader/index.html">
-							<p>H5图片上传预览插件</p>
-							<p>基于FileReader API的图片上传预览插件</p>
-						</a>
-					</div>
-				</div>
-				<div class="one-work">
-					<div class="one-work-inside">
-						<img src="content/images/computer9.png" />
-						<a class="work-inside-des" target="_blank" href="#">
-							<p></p>
-						</a>
-					</div>
-				</div>
-				<div class="one-work">
-					<div class="one-work-inside">
-						<img src="content/images/computer10.png" />
-						<a class="work-inside-des" target="_blank" href="SXM_DEMO/demo-dzp/index.html">
-							<p>移动端H5转盘抽奖游戏</p>
-						</a>
-					</div>
-				</div>
-				<div class="one-work">
-					<div class="one-work-inside">
-						<img src="content/images/computer14.png" />
-						<a class="work-inside-des" target="_blank" href="https://github.com/sunxiaomingATcn"><p>我的GitHub</p></a>
-					</div>
-				</div>
-				<div class="one-work">
-					<div class="one-work-inside">
-						<img src="content/images/computer15.png" />
-						<a class="work-inside-des" target="_blank" href="http://www.cnblogs.com/xiaomingSun"><p>我的技术博客</p></a>
+			<div class="page page1" id="page1">
+				<canvas id="canvasHeart"></canvas>
+				<div class="container">
+					
+					<h1 class="website-title">{{ Language.title }}</h1>
+					<h4 class="web-developer-describe"></h4>
+					<p class="Remarks">{{ Language.tips }}</p>
+					<div class="my-des">
+						<a class="myWorksTitle">{{ Language.clickWorks }}</a>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!--<div class="page my-Skill">
+			<div class="page my-achievements">
+				<h1>{{ Language.myworksTitle }}</h1>
+				<div class="myWorks">
+					<div class="one-work" v-for="onework in Language.works" >
+						<div class="one-work-inside">
+							<img :src=onework.bgimage />
+							<a class="work-inside-des" target="_blank" :href=onework.href>
+								<p>{{ onework.title }}</p>
+								<p>{{ onework.des }}</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<div class="page my-Skill">
 			<h1>我的技能</h1>
 		</div>-->
-		<div class="page pageContactMe">
-			<h1>联系我</h1>
-			<div class="my-msg"><span>电话：</span><span class="animate-show-up">Don't call me , I'm not online</span></div>
-			<div class="my-msg"><span>QQ：</span><span class="animate-show-up animateDelay2">I'm still not online</span></div>
-			<div class="my-msg"><span>微信：</span><span class="animate-show-up animateDelay3">I'm still not online</span></div>
-			<div class="my-msg"><span>前端大牛想对我提出宝贵意见：</span><span class="animate-show-up animateDelay4">不接受任何形式的批评</span></div>
-			<div class="my-msg"><span>前端小白渴望与我同流合污：</span><span class="animate-show-up animateDelay5">后续可能做留言板功能</span></div>
-			<div class="my-msg"><span>我的尊严：</span><span class="animate-show-up animateDelay6">想吸纳我去贵公司请点击<img class="call-me" src="content/images/phone.png" /></span></div>
-			<div class="my-msg my-emial"><span>邮箱：</span><span>mingmingsun@163.com</span></div>
-			
+			<div class="page pageContactMe">
+				<h1>{{ Language.mymessageTile }}</h1>
+				<div class="my-msg" v-for="(onemessage,index) in Language.messages"><span>{{ onemessage.title }}：</span><span class="animate-show-up" :class=onemessage.classname >{{ onemessage.answer }}</span></div>
+
+
+			</div>
 		</div>
+		<script src="content/script/jquery-2.1.1.min.js"></script>
+		<script src="content/script/vue.min.js"></script>
+		<script src="scripts/dist/index-529667a61b.js"></script>
 	</body>
 
 </html>
