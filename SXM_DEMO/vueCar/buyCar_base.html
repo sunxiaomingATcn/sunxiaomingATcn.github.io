@@ -8,6 +8,8 @@
 <script src="scripts/vue.min.js"></script>
 <script src="scripts/jquery-2.1.1.min.js"></script>
 <script src="../../content/Layer/layer.js"></script>
+<input type="checkbox" id="checkbox" v-model="checked">
+<label for="checkbox">{{ checked }}</label>
 	<div class="buyCarBox" id="buyCarBox" v-cloak>
 		<div class="haveCloth" v-if="cloths.length">
 			<div class="cloth-thead">
@@ -89,6 +91,7 @@
 		var buyCar = new Vue({
 		el: "#buyCarBox",
 		data: {
+			checked:'false',
 			transitionName :  'expand',
 			cloths: [{
 					ImagePath: 'images/information/carClothDemo.jpg',

@@ -150,22 +150,16 @@ $.fn.extend({
 	
 	var app = new Vue({
 		el:'#pageContainer',
-		data:{'content':enData},
+		data:{switchs:false},
 		computed:{
-			Language:function(){
-				var Lan = enData;
-				if(this.switch){
-					alert(0)
-					this.content = cnData;
-					
-				}else{
-					this.content = enData;
-				}
-				return Lan;
+			Language:function(){//控制语言
+				return this.switchs?enData:cnData
 			}
 		}
 		
 	})
+	
+	
 $(function() {
 	
 	//loading动画
