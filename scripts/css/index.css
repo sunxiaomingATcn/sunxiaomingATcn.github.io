@@ -351,7 +351,7 @@ span.animate-show-up {
 .bg_con {
 	width: 50px;
 	position: fixed;
-	z-index: 10000000;
+	z-index: 10001;
 	top: 50px;
 	right: 50px;
 }
