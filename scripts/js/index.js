@@ -1,4 +1,5 @@
 $.fn.extend({
+	//-----------------------------------------------------打印字符串
 	typing: function(str, timeInterval) {
 		var _this = $(this)
 		timeInterval = timeInterval || 200
@@ -15,7 +16,7 @@ $.fn.extend({
 
 		}
 	},
-	//滚动到顶部
+	//-----------------------------------------------------滚动到顶部
 	scrollAppoint: function(timeInterval) {
 		timeInterval = timeInterval || 500
 		var scrollTop = $(this).offset().top
@@ -24,7 +25,7 @@ $.fn.extend({
 			'scrollTop': scrollTop
 		}, timeInterval)
 	},
-	//鼠标跟随
+	//------------------------------------------------------鼠标跟随
 	followMouse: function(MouseElement, timeInterval) {
 		timeInterval = timeInterval || 500;
 		var w = $(this).width();
@@ -91,36 +92,34 @@ $.fn.extend({
 $(function(){
 
 	
-	//loading动画
+	//-------------------------------------------------------------------------loading动画
 	imageLoaded(function(){
 		$('.loading-box').fadeOut()
-		
 	})
 	
-	
-	//打印效果
+	//---------------------------------------------------------------------------打印效果
 	$('.web-developer-describe').typing('Talk is cheap , show me the code', 100);
 
 	$('.myWorksTitle').click(function() {
 		$('.my-achievements').scrollAppoint()
 	})
-	//鼠标跟随效果
+	
+	//--------------------------------------------------------------------------鼠标跟随效果
 	$('.one-work').followMouse('.work-inside-des')
 
-	//显示邮箱
-	$('.call-me').click(function() {
-		$('.my-emial').addClass('animate-show-up')
-	})
-	//联系我动画
+	//--------------------------------------------------------------------------我的技能
+	animateArc(document.getElementById('canvas1'), 85,80,'yellow');
+	
+	//--------------------------------------------------------------------------联系我动画
 	$(window).on('scroll touchend', function() {
 
-		var onPage3 = $('.pageContactMe').offset().top - $(window).scrollTop();
-		onPage3 <= 5 ? $('.pageContactMe').addClass('animate-show').removeClass('animate-show-callback') : $('.pageContactMe').addClass('animate-show-callback').removeClass('animate-show')
+		var PageOffsetTop = $('.pageContactMe').offset().top - $(window).scrollTop();
+		PageOffsetTop <= 10 ? $('.pageContactMe').addClass('animate-show').removeClass('animate-show-callback') : $('.pageContactMe').addClass('animate-show-callback').removeClass('animate-show')
 
 	})
 	
 	
-	//canvas heart
+	//-------------------------------------------------------------------------canvas heart
 	var canvas = document.getElementById("canvasHeart");
 	var ctx = canvas.getContext("2d");
 
@@ -213,7 +212,7 @@ $(function(){
 	}
 })	
 
-//所有图片加载完成
+//---------------------------------------------------所有图片加载完成
 function imageLoaded(fn){
 	var totalImg = $('img').length;
     var currentImg = 0;

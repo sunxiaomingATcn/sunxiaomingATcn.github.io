@@ -47,6 +47,7 @@
 				<label for="checked_1"></label>
 			</div>
 			<div class="page page1" id="page1">
+				
 				<canvas id="canvasHeart"></canvas>
 				<div class="container">
 					
@@ -72,9 +73,26 @@
 					</div>
 				</div>
 			</div>
-			<!--<div class="page my-Skill">
-			<h1>我的技能</h1>
-		</div>-->
+			<div class="page my-Skill">
+				<h1>{{ Language.mySkills }}</h1>
+				<div class="skillsContainer">
+					<div class="mySkill">
+						<canvas id="canvas1" width="200px" height="200px"></canvas>
+					</div>
+					<div class="mySkill">
+						<canvas id="canvas2" width="200px" height="200px"></canvas>
+					</div>
+					<div class="mySkill">
+						<canvas id="canvas3" width="200px" height="200px"></canvas>
+					</div>
+					<div class="mySkill">
+						<canvas id="canvas4" width="200px" height="200px"></canvas>
+					</div>
+					<div class="mySkill">
+						<canvas id="canvas5" width="200px" height="200px"></canvas>
+					</div>
+				</div>
+			</div>
 			<div class="page pageContactMe">
 				<h1>{{ Language.mymessageTile }}</h1>
 				<div class="my-msg" v-for="(onemessage,index) in Language.messages"><span>{{ onemessage.title }}：</span><span class="animate-show-up" :class=onemessage.classname >{{ onemessage.answer }}</span></div>
@@ -84,7 +102,7 @@
 		<script src="content/script/vue.min.js"></script>
 		<script src="scripts/js/data.js"></script>
 		<script src="scripts/js/index.js"></script>
-		
+		<script src="SXM_DEMO/canvas/round/ringlike.js"></script>
 	</body>
 
 </html>

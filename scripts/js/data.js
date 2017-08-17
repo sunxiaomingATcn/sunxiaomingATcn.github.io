@@ -5,6 +5,7 @@ $(function(){
 		tips:'暂时比较简陋，正在完善中~',
 		clickWorks:'我的作品',
 		myworksTitle:'我的作品',
+		mySkills:'我的技能',
 		mymessageTile:'联系我',
 		works:[
 			{href:'https://www.0-fashion.com',title:'零时尚官网',des:'企业在线官网',bgimage:'content/images/computer1.png'},			
@@ -33,8 +34,9 @@ $(function(){
 	var enData = {
 		title:'Web Developer Ming',
 		tips:"For the time being, it's being perfected",
-		clickWorks:'My work',
-		myworksTitle:'My work',
+		clickWorks:'My works',
+		myworksTitle:'My works',
+		mySkills:'My skills',
 		mymessageTile:'Contact me',
 		works:[
 			{href:'https://www.0-fashion.com',title:'Zero fashion official website',des:'Enterprise online official website',bgimage:'content/images/computer1.png'},			
@@ -45,25 +47,25 @@ $(function(){
 			{href:'https://github.com/sunxiaomingATcn/sunxiaomingATcn.github.io/tree/master/SXM_DEMO/nodejs',title:'NodeJs crawler',des:'A small crawler written in demo NodeJS',bgimage:'content/images/computer6.png'},
 			{href:'SXM_DEMO/carousel/carousel.html',title:'JS original picture carousel plugin',des:'Slide plug-in developed with native JS',bgimage:'content/images/computer7.png'},
 			{href:'SXM_DEMO/fileReader/index.html',title:'H5 picture upload preview plugin',des:'Picture upload preview plugin based on FileReader API',bgimage:'content/images/computer8.png'},
-			{href:'',title:'',des:'',bgimage:'content/images/computer9.png'},
+			{href:'SXM_DEMO/FullScreenScrolling/index.html',title:'JQuery full screen scrolling plugin',des:'Full screen scrolling plugin based on jQuery',bgimage:'content/images/computer9.png'},
 			{href:'SXM_DEMO/demo-dzp/index.html',title:'Mobile terminal H5 turntable sweepstakes game',des:'',bgimage:'content/images/computer10.png'},
 			{href:'https://github.com/sunxiaomingATcn',title:'My GitHub',des:'',bgimage:'content/images/computer11.png'},
 			{href:'http://www.cnblogs.com/xiaomingSun',title:'My Technical blog',des:'',bgimage:'content/images/computer12.png'}
 		],
 		messages:[
-			{classname:'animate-show-up animateDelay1',title:'Telephone','answer':"Please don't call me, I'm not online"},
-			{classname:'animate-show-up animateDelay2',title:'QQ','answer':"Please don't call me, I'm not online"},
-			{classname:'animate-show-up animateDelay3',title:'weChat','answer':"Please don't call me, I'm not online"},
-			{classname:'animate-show-up animateDelay4',title:'The front bull wants to give me some valuable advice','answer':'Not accepting any form of criticism'},
-			{classname:'animate-show-up animateDelay5',title:'The primary front end with my desire','answer':'Follow up may do message board function'},
-			{classname:'animate-show-up animateDelay6',title:'My dignity','answer':'Want to take me to your company?:mingmingsun@163.com'},			
+			{classname:'animate-show-up',title:'Telephone','answer':"Please don't call me, I'm not online"},
+			{classname:'animate-show-up animateDelay1',title:'QQ','answer':"Please don't call me, I'm not online"},
+			{classname:'animate-show-up animateDelay2',title:'weChat','answer':"Please don't call me, I'm not online"},
+			{classname:'animate-show-up animateDelay3',title:'The front bull wants to give me some valuable advice','answer':'Not accepting any form of criticism'},
+			{classname:'animate-show-up animateDelay4',title:'The primary front end with my desire','answer':'Follow up may do message board function'},
+			{classname:'animate-show-up animateDelay5',title:'My dignity','answer':'Want to take me to your company?:mingmingsun@163.com'},			
 		]
 	}
 	
 	//vue实例化
 	var app = new Vue({
 		el:'#pageContainer',
-		data:{switchs:false},
+		data:{switchs:true},
 		computed:{
 			Language:function(){//控制语言
 				return this.switchs?enData:cnData
