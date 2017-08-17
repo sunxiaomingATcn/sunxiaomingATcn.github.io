@@ -126,7 +126,7 @@ a {
 .my-achievements h1 {
 	color: #FFF;
 	text-shadow: 0 0 3px #000;
-	margin: 30px auto;
+	margin: 50px auto;
 	text-align: center;
 }
 
@@ -143,13 +143,13 @@ a {
 }
 
 .my-achievements .myWorks .one-work .one-work-inside {
-	padding-bottom: 100%;
+	padding-bottom: 75%;
 	position: relative;
 	overflow: hidden;
 }
 
 .my-achievements .myWorks .one-work .one-work-inside img {
-	height: 100%;
+	width: 100%;
 	position: absolute;
 }
 
@@ -163,9 +163,11 @@ a {
 	color: #FFF;
 	text-align: center;
 }
-
+.one-work-inside .work-inside-des p{
+	    padding: 0 10px;
+}
 .one-work-inside .work-inside-des p:nth-child(1) {
-	margin-top: 30%;
+	margin-top: 15%;
 	font-size: 16px;
 }
 
@@ -298,7 +300,7 @@ span.animate-show-up {
 
 @media only screen and (min-width: 1000px) {
 	.my-achievements .myWorks {
-		width: 800px;
+		width: 930px;
 	}
 	.my-achievements .myWorks .one-work {
 		width: 25%;
@@ -310,7 +312,7 @@ span.animate-show-up {
 
 @media only screen and (min-width: 640px) and (max-width: 1000px) {
 	.my-achievements .myWorks {
-		width: 100%;
+		width: 70%;
 	}
 	.my-achievements .myWorks .one-work {
 		width: 33.33%;

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../content/script/jquery-2.1.1.min.js"></script>
+		<script src="fullScreenScrolling.js"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				color: #FFF;
+				font-family: "microsoft yahei";
+			}
+			
+			.fullPage:nth-child(odd) {
+				background: orange;
+			}
+			.fullPage:nth-child(even) {
+				background: green;
+				
+			}
+			.fullpagePagination{
+				position: fixed;
+				top: 50%;
+				right: 50px;
+				margin-top: -50px;
+				z-index: 1000;
+			}
+			.pagination{
+				width: 10px;
+				height: 10px;
+				border: 2px solid #FFF;
+				border-radius: 50%;
+			    z-index: 1000;
+				margin-bottom: 20px;
+			}
+			.pagination.paginationActive{
+				background: #FFF;
+			}
+			textarea{
+				width: 100%;
+				height: 100%;
+				resize: none;
+				background: transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="fullpagePagination"></div>
+		<div id="fullPageBox">
+			<div class="fullPage">
+	<textarea>
+<!--BODY结构-->
+	<div class="fullpagePagination"></div><!--分页器，不需要不写-->
+	<div id="fullPageBox"><!--页结构-->
+		<div class="fullPage">1</div>
+		<div class="fullPage">2</div>
+		<div class="fullPage">3</div>
+	</div>
+	
+<!--CSS-->
+	.fullpagePagination{<!--分页器样式（可以自定义）-->
+		position: fixed;
+		top: 50%;
+		right: 50px;
+		margin-top: -50px;
+		z-index: 1000;
+	}
+	.pagination{
+		width: 10px;
+		height: 10px;
+		border: 2px solid #FFF;
+		border-radius: 50%;
+		z-index: 1000;
+		margin-bottom: 20px;
+	}
+	.pagination.paginationActive{<!--当前显示页分页器样式-->
+		background: #FFF;
+	}
+	
+<!--SCRIPT-->
+	1.引入jquery和fullScreenScrolling.js
+	2.初始化
+	$('#fullPageBox').fullpage({
+		activeIndex:3,//首页，默认第1页
+		direction:'horizontal',//页面滑动方向，默认垂直
+		pagination:true,//分页器，默认不显示
+		speed:800//切换速度，单位毫秒，默认1000
+	})
+	</textarea>
+				
+				
+				
+			</div>
+			<div class="fullPage">2</div>
+			<div class="fullPage">3</div>
+			<div class="fullPage">4</div>
+			<div class="fullPage">5</div>
+			<div class="fullPage">6</div>
+		</div>
+	</body>
+	<script>
+		
+		
+	
+	
+	
+		$('#fullPageBox').fullpage({
+			activeIndex:1,//最前页，默认1
+//			direction:'horizontal',//页面滑动方向。默认垂直
+			pagination:true,//分页器，默认不显示
+			speed:800,//切换速度，单位毫秒，默认1000
+		})
+	</script>
+
+</html>
