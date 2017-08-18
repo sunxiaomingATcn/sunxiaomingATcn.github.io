@@ -92,12 +92,41 @@
 				float: right;
 				color: #FFF;
 			}
+			a{
+				color: #FFF;
+				text-decoration: none;
+			}
+			.meth textarea{
+				width: 500px;
+				height: 500px;
+				background: transparent;
+				border: 0px;
+				color: #FFF;
+				position: absolute;
+				top: 250px;
+				left: 0;
+				font-family: "microsoft yahei";
+			}
 		</style>
 	</head>
 
 	<body>
 		<div class="box"></div>
-		<a style="position: absolute;top: 200px;left: 10px;" href="https://github.com/sunxiaomingATcn/sunxiaomingATcn.github.io/blob/master/SXM_DEMO/fileReader_plug_sxm">插件地址</a>
+		<a style="position: absolute;top: 200px;left: 10px;" href="https://github.com/sunxiaomingATcn/sunxiaomingATcn.github.io/blob/master/SXM_DEMO/fileReader_plug_sxm">插件地址：</a>
+		<a style="position: absolute;top: 200px;left: 100px;" href="https://github.com/sunxiaomingATcn/sunxiaomingATcn.github.io/blob/master/SXM_DEMO/fileReader_plug_sxm">https://github.com/sunxiaomingATcn/sunxiaomingATcn.github.io/blob/master/SXM_DEMO/fileReader_plug_sxm</a>
+		
+		<div class="meth">
+			<textarea name="" rows="" cols="">
+使用方法
+var imageFile = new readImage({
+	"Multiselect": true,//允许多选，默认false
+	"id": "file1",//自定义file id,可以不传值
+	//"maxNum": 4,//限制最大上传图片数量，可以不传值
+	"Container": ".box"//上传容器，必须传值
+})
+imageFile.init()
+			</textarea>
+		</div>
 	</body>
 	<!--<script src="jquery-2.1.1.min.js"></script>-->
 	<script src="fileReader.js"></script>
@@ -106,13 +135,13 @@
 		
 
 //实例化
-		var a = new readImage({
+		var imageFile = new readImage({
 			"Multiselect": true,//允许多选，默认false
 			"id": "file1",//自定义file id,可以不传值
 			//"maxNum": 4,//限制最大上传图片数量，可以不传值
 			"Container": ".box"//上传容器，必须传值
 		})
-		a.init()
+		imageFile.init()
 
 	</script>
 

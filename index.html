@@ -8,7 +8,7 @@
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 		<title>前端小透明-Web Developer Ming</title>
 		<link rel="shortcut icon" href="content/icon/title.jpg" />
-		<link rel="stylesheet" href="scripts/dist/index-dde4924e0c.css" />
+		<link rel="stylesheet" href="scripts/dist/index-a6bb4052f7.css" />
 		<script>
 			var _hmt = _hmt || [];
 			(function() {
@@ -18,18 +18,20 @@
 				s.parentNode.insertBefore(hm, s);
 			})();
 		</script>
+
 	</head>
 
 	<body>
 
 		<div class="loading-box">
 			<div class="item-inner">
-				<div class="item-loader-container">
+				<!--<div class="item-loader-container">
 					<div class="la-square-jelly-box la-2x">
 						<div></div>
 						<div></div>
 					</div>
-				</div>
+				</div>-->
+				<img src="content/images/loading.gif" />
 			</div>
 			<div class="item-title">
 			</div>
@@ -66,7 +68,7 @@
 				<div class="myWorks">
 					<div class="one-work" v-for="onework in Language.works">
 						<div class="one-work-inside">
-							<img :src=onework.bgimage />
+							<img :src=onework.bgimage data-imageload=""/>
 							<a class="work-inside-des" target="_blank" :href=onework.href>
 								<p>{{ onework.title }}</p>
 								<p>{{ onework.des }}</p>
@@ -92,7 +94,7 @@
 					</div>
 					<div class="mySkill">
 						<canvas id="canvas4" width="150px" height="150px"></canvas>
-						<div>HTML</div>
+						<div>jQuery</div>
 					</div>
 
 				</div>
@@ -133,8 +135,8 @@
 		</div>
 		<script src="content/script/jquery-2.1.1.min.js"></script>
 		<script src="content/script/vue.min.js"></script>
-		<script src="scripts/dist/data-8e8b1a7766.js"></script>
-		<script src="scripts/dist/index-085862e326.js"></script>
+		<script src="scripts/dist/data-44c2ed3982.js"></script>
+		<script src="scripts/dist/index-2ee297433d.js"></script>
 		<script src="SXM_DEMO/canvas/round/ringlike.js"></script>
 	</body>
 

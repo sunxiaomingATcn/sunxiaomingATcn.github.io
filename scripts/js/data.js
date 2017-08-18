@@ -65,7 +65,7 @@ $(function(){
 	//vue实例化
 	var app = new Vue({
 		el:'#pageContainer',
-		data:{switchs:false},
+		data:{switchs:true},
 		computed:{
 			Language:function(){//控制语言
 				return this.switchs?enData:cnData
