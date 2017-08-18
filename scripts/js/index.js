@@ -86,11 +86,15 @@ $.fn.extend({
 	}
 })
 
-$(function() {
 
+
+$(function() {
+	
 	//-------------------------------------------------------------------------loading动画
 	imageLoaded(function() {
 		$('.loading-box').fadeOut()
+		$('body').css({'height':'auto','overflow':'auto'})
+		$('.website-title').addClass('move')
 	})
 
 	//---------------------------------------------------------------------------打印效果
@@ -106,17 +110,18 @@ $(function() {
 	//--------------------------------------------------------------------------技能/联系我动画
 	var pagetwo = true;
 	$(window).on('scroll touchend', function() {
+		var windowH = $(window).height();
 		var ContactMeOffsetTop = $('.pageContactMe').offset().top - $(window).scrollTop();
-		ContactMeOffsetTop <= 100 ? $('.pageContactMe').addClass('animate-show').removeClass('animate-show-callback') : $('.pageContactMe').addClass('animate-show-callback').removeClass('animate-show')
+		ContactMeOffsetTop <= windowH/3 ? $('.pageContactMe').addClass('animate-show').removeClass('animate-show-callback') : $('.pageContactMe').addClass('animate-show-callback').removeClass('animate-show')
 
 		var mySkillPageOnOffsetTop = $('.my-Skill').offset().top - $(window).scrollTop();
-		if(mySkillPageOnOffsetTop <= 200) {
+		if(mySkillPageOnOffsetTop <= windowH/3) {
 			$(
 				$('.skillsTitle').show()
 			)
 			$('.my-Skill').addClass('activePage');
 		}
-		if(mySkillPageOnOffsetTop <= 200 && pagetwo) {
+		if(mySkillPageOnOffsetTop <= windowH/3 && pagetwo) {
 			pagetwo = false;
 			myskill()
 		}
@@ -218,9 +223,9 @@ $(function() {
 
 //---------------------------------------------------所有图片加载完成
 function imageLoaded(fn) {
-	var totalImg = $('img').length;
+	var totalImg = $('img[data-imageload]').length;
 	var currentImg = 0;
-	$('img').on('load', function() {
+	$('img[data-imageload]').on('load', function() {
 		currentImg++;
 		if(currentImg === totalImg) {
 			if(fn) fn()

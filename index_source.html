@@ -21,16 +21,17 @@
 
 	</head>
 
-	<body>
+	<body onmousewheel="null">
 
 		<div class="loading-box">
 			<div class="item-inner">
-				<div class="item-loader-container">
+				<!--<div class="item-loader-container">
 					<div class="la-square-jelly-box la-2x">
 						<div></div>
 						<div></div>
 					</div>
-				</div>
+				</div>-->
+				<img src="content/images/loading.gif" />
 			</div>
 			<div class="item-title">
 			</div>
@@ -67,7 +68,7 @@
 				<div class="myWorks">
 					<div class="one-work" v-for="onework in Language.works">
 						<div class="one-work-inside">
-							<img :src=onework.bgimage />
+							<img :src=onework.bgimage data-imageload=""/>
 							<a class="work-inside-des" target="_blank" :href=onework.href>
 								<p>{{ onework.title }}</p>
 								<p>{{ onework.des }}</p>
@@ -93,7 +94,7 @@
 					</div>
 					<div class="mySkill">
 						<canvas id="canvas4" width="150px" height="150px"></canvas>
-						<div>HTML</div>
+						<div>jQuery</div>
 					</div>
 
 				</div>
