@@ -36,25 +36,25 @@ $.fn.extend({
 			var x = (e.pageX - $(this).offset().left - (w / 2)) * (w > h ? (h / w) : 1);
 			var y = (e.pageY - $(this).offset().top - (h / 2)) * (h > w ? (w / h) : 1);
 			var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4;
-			var targettop,targetleft;
+			var targettop, targetleft;
 			switch(direction) {
 				case 0: //上方
-						targettop = -h
-						targetleft =  0
+					targettop = -h
+					targetleft = 0
 					break;
 				case 1: //右侧
-						targettop = 0
-						targetleft = w
-					
+					targettop = 0
+					targetleft = w
+
 					break;
 				case 2: //下方
-						targettop =  h
-						targetleft = 0
-					
+					targettop = h
+					targetleft = 0
+
 					break;
 				case 3: //左侧
-						targettop =  0
-						targetleft = -w
+					targettop = 0
+					targetleft = -w
 					break;
 			}
 			if(e.type == 'mouseenter') {
@@ -63,8 +63,8 @@ $.fn.extend({
 					'transition': '1s all'
 				});
 				$(this).find(MouseElement).css({
-					top : targettop ,
-					left : targetleft
+					top: targettop,
+					left: targetleft
 				});
 				$(this).find(MouseElement).animate({
 					top: 0,
@@ -86,39 +86,43 @@ $.fn.extend({
 	}
 })
 
+$(function() {
 
-	
-	
-$(function(){
-
-	
 	//-------------------------------------------------------------------------loading动画
-	imageLoaded(function(){
+	imageLoaded(function() {
 		$('.loading-box').fadeOut()
 	})
-	
+
 	//---------------------------------------------------------------------------打印效果
 	$('.web-developer-describe').typing('Talk is cheap , show me the code', 100);
 
 	$('.myWorksTitle').click(function() {
 		$('.my-achievements').scrollAppoint()
 	})
-	
+
 	//--------------------------------------------------------------------------鼠标跟随效果
 	$('.one-work').followMouse('.work-inside-des')
 
-	//--------------------------------------------------------------------------我的技能
-	animateArc(document.getElementById('canvas1'), 85,80,'yellow');
-	
-	//--------------------------------------------------------------------------联系我动画
+	//--------------------------------------------------------------------------技能/联系我动画
+	var pagetwo = true;
 	$(window).on('scroll touchend', function() {
+		var ContactMeOffsetTop = $('.pageContactMe').offset().top - $(window).scrollTop();
+		ContactMeOffsetTop <= 100 ? $('.pageContactMe').addClass('animate-show').removeClass('animate-show-callback') : $('.pageContactMe').addClass('animate-show-callback').removeClass('animate-show')
 
-		var PageOffsetTop = $('.pageContactMe').offset().top - $(window).scrollTop();
-		PageOffsetTop <= 10 ? $('.pageContactMe').addClass('animate-show').removeClass('animate-show-callback') : $('.pageContactMe').addClass('animate-show-callback').removeClass('animate-show')
+		var mySkillPageOnOffsetTop = $('.my-Skill').offset().top - $(window).scrollTop();
+		if(mySkillPageOnOffsetTop <= 200) {
+			$(
+				$('.skillsTitle').show()
+			)
+			$('.my-Skill').addClass('activePage');
+		}
+		if(mySkillPageOnOffsetTop <= 200 && pagetwo) {
+			pagetwo = false;
+			myskill()
+		}
 
 	})
-	
-	
+
 	//-------------------------------------------------------------------------canvas heart
 	var canvas = document.getElementById("canvasHeart");
 	var ctx = canvas.getContext("2d");
@@ -127,7 +131,7 @@ $(function(){
 	ctx.strokeStyle = "red";
 	ctx.shadowBlur = 25;
 	ctx.shadowColor = "hsla(0, 100%, 60%,0.7)";
-	
+
 	var precision = 100;
 	var hearts = [];
 	var mouseMoved = false;
@@ -141,7 +145,7 @@ $(function(){
 		ww = canvas.width = window.innerWidth;
 		wh = canvas.height = window.innerHeight;
 	}
-	
+
 	function onMove(e) {
 		mouseMoved = true;
 		if(e.type === "touchmove") {
@@ -152,14 +156,14 @@ $(function(){
 			hearts.push(new Heart(e.clientX, e.clientY));
 		}
 	}
-	
+
 	var Heart = function(x, y) {
 		this.x = x || Math.random() * ww;
 		this.y = y || Math.random() * wh;
 		this.size = Math.random() + 1;
 		this.shadowBlur = Math.random() * 10;
-		this.speedX = (Math.random() - 0.5 ) * 8;
-		this.speedY = (Math.random() - 0.5 ) * 8;
+		this.speedX = (Math.random() - 0.5) * 8;
+		this.speedY = (Math.random() - 0.5) * 8;
 		this.speedSize = Math.random() * 0.05 + 0.01;
 		this.opacity = 1;
 		this.vertices = [];
@@ -172,7 +176,7 @@ $(function(){
 			this.vertices.push(vector);
 		}
 	}
-	
+
 	Heart.prototype.draw = function() {
 		this.size -= this.speedSize;
 		this.x += this.speedX;
@@ -182,7 +186,7 @@ $(function(){
 		ctx.translate(-1000, this.y);
 		ctx.scale(this.size, this.size);
 		ctx.beginPath();
-		
+
 		for(var i = 0; i < precision; i++) {
 			var vector = this.vertices[i];
 			ctx.lineTo(vector.x, vector.y);
@@ -196,10 +200,10 @@ $(function(){
 		ctx.fill();
 		ctx.restore();
 	};
-	
+
 	function render(a) {
 		requestAnimationFrame(render);
-	
+
 		hearts.push(new Heart())
 		ctx.clearRect(0, 0, ww, wh);
 		for(var i = 0; i < hearts.length; i++) {
@@ -210,18 +214,24 @@ $(function(){
 			}
 		}
 	}
-})	
+})
 
 //---------------------------------------------------所有图片加载完成
-function imageLoaded(fn){
+function imageLoaded(fn) {
 	var totalImg = $('img').length;
-    var currentImg = 0;
-    $('img').on('load',function(){
-	    currentImg++;
-	    if(currentImg === totalImg){
-			if(fn)fn()
-	    }
-   })
+	var currentImg = 0;
+	$('img').on('load', function() {
+		currentImg++;
+		if(currentImg === totalImg) {
+			if(fn) fn()
+		}
+	})
 }
 
-
+//--------------------------------------------------------------------------我的技能
+function myskill() {
+	animateArc(document.getElementById('canvas1'), 90, 80, 'yellow');
+	animateArc(document.getElementById('canvas2'), 90, 80, '#4dd0e1');
+	animateArc(document.getElementById('canvas3'), 90, 80, '#80bd01');
+	animateArc(document.getElementById('canvas4'), 90, 80, 'yellow');
+}
