@@ -3,8 +3,8 @@
 使用技术：<br />
 1.前端构建gulp<br />
 2.canvas动画<br />
-3.vue.js框架<br />
-
+3.vue.js框架(有angular版本)<br />
+4.requirejs模块化
 
 前端构建步骤
 ---------------------------
