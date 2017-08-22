@@ -65,7 +65,7 @@
 
 	//修改html文件引入地址
 	gulp.task('rev', function () {
-	    return gulp.src(['rev/**/*.json', 'index_source.html'])
+	    return gulp.src(['rev/**/*.json', 'index_source_vue.html'])
 	        .pipe( revCollector({
 	            replaceReved: true,
 	            dirReplacements: {

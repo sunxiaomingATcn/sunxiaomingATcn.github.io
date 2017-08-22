@@ -238,5 +238,5 @@ function myskill() {
 	animateArc(document.getElementById('canvas1'), 90, 80, 'yellow');
 	animateArc(document.getElementById('canvas2'), 90, 80, '#4dd0e1');
 	animateArc(document.getElementById('canvas3'), 90, 80, '#80bd01');
-	animateArc(document.getElementById('canvas4'), 90, 80, 'yellow');
+	animateArc(document.getElementById('canvas4'), 90, 80, '#4C5D8E');
 }
