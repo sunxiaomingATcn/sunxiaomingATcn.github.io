@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>预约答题</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="stylesheet" href="yuyuedati.css" />
+		<script src="../libs/vue.min.js"></script>
+		<script src="../libs/vue-router.js"></script>
+		<script src="../js/jquery-2.1.1.min.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<div class="back">
+				<a href="../shezhi.html"><img src="../fenggecs/img/return@2x.png" alt="">返回</a>
+			</div>
+			<p>预约</p>
+
+		</header>
+		<div id="app">
+			<div class="progress">
+				<a href="javascript:;"><img :src='activeQuestionNum>=1?"../fenggecs/img/d1_pre@2x.png":"../fenggecs/img/d1@2x.png"'></a>
+				<a href="javascript:;"><img :src='activeQuestionNum>=2?"../fenggecs/img/d2_pre@2x.png":"../fenggecs/img/d2@2x.png"'></a>
+				<a href="javascript:;"><img :src='activeQuestionNum>=3?"../fenggecs/img/d3_pre@2x.png":"../fenggecs/img/d3@2x.png"'></a>
+				<a href="javascript:;"><img :src='activeQuestionNum>=4?"../fenggecs/img/d4_pre@2x.png":"../fenggecs/img/d4@2x.png"'></a>
+				<a href="javascript:;"><img :src='activeQuestionNum>=5?"../fenggecs/img/d5_pre@2x.png":"../fenggecs/img/d5@2x.png"'></a>
+				<a href="javascript:;"><img :src='activeQuestionNum>=6?"../fenggecs/img/d6_pre@2x.png":"../fenggecs/img/d6@2x.png"'></a>
+				<a href="javascript:;"><img :src='activeQuestionNum>=7?"../fenggecs/img/d7_pre@2x.png":"../fenggecs/img/d7@2x.png"'></a>
+				<a href="javascript:;"><img :src='activeQuestionNum>=8?"../fenggecs/img/d8_pre@2x.png":"../fenggecs/img/d8@2x.png"'></a>
+			</div>
+			<!-- <router-view></router-view>标签，用于渲染匹配的组件 -->
+			<router-view></router-view>
+		</div>
+		<!--问题1-->
+		
+		<!--问题2-->
+		<template id="question2">
+			<div class="pagebox">
+				<p class="question-subject"><span class="questionNum">2</span>请选择服装类型</p>
+				<a class="next-subject" href="#/question3">NEXT</a>
+			</div>
+		</template>
+		<!--问题3-->
+		<template id="question3">
+			<div class="pagebox">
+				<p class="question-subject">请选择场合</p>
+				<a href="#/question4">next</a>
+			</div>
+		</template>
+		<!--问题4-->
+		<template id="question4">
+			<div class="pagebox">
+				<p class="question-subject">选择金额总预算</p>
+				<a href="#/question5">next</a>
+			</div>
+		</template>
+	</body>
+	<script>
+		import question1 from 'question1'
+		//
+//		var question1 = Vue.extend({
+//			template: '#question1',
+//			data: function() {
+//				return {
+//					clientXstart: 0,
+//					startLeft:0,
+//					
+//					
+//				}
+//			},
+//			methods: {
+//				dragstart: function(ev) {
+//					this.clientXstart = ev.clientX == 'undefined'? ev.touches[0].clientX : ev.clientX ;
+//					this.startLeft = $('.pointer').css('left').replace("px","");
+//					document.onmousemove = document.ontouchstart = this.dragmove;
+//					document.onmouseup = document.ontouchmove = this.dragend;
+//				},
+//				dragmove : function(ev){
+//					var clientX = ev.clientX == 'undefined'? ev.touches[0].clientX : ev.clientX ;
+//					var deviationX = parseFloat(clientX) - parseFloat(this.clientXstart);
+//					var left = parseFloat(deviationX) + parseFloat(this.startLeft);
+//					var boundaryLeft = $('.rule').offset().left;
+//					var boundaryright = $('.rule').offset().left + $('.rule').width() - 12;
+//					if(parseFloat(clientX) <= boundaryright && parseFloat(clientX) >= boundaryLeft){
+//						$('.pointer').css('left',left + "px")
+//					}
+//					
+//				},
+//				dragend: function(ev) {
+//					
+//					document.onmousemove = document.ontouchstart = null;
+//					document.onmouseup = document.ontouchmove = null;
+//					
+//					var currentLeft = $('.pointer').css('left').replace("px","");
+//					console.log(Math.round( currentLeft/16 ))
+//					
+//						$('.pointer').css('left',Math.round( currentLeft/16 )*16 +"px")
+//					
+//					//	$('.pointer').css('left',(currentLeft/16 )*16 +"px")
+//					
+//				}
+//			},
+//			computed: {
+//				deviationX: function() {
+//					return(this.clientXend - this.clientXstart);
+//				}
+//			}
+//
+//		});
+		var question2 = Vue.extend({
+			template: '#question2',
+
+		});
+		var question3 = Vue.extend({
+			template: '#question3',
+
+		});
+		var question4 = Vue.extend({
+			template: '#question4',
+
+		});
+		var question5 = Vue.extend({
+			template: '#question5',
+
+		});
+		var question6 = Vue.extend({
+			template: '#question6',
+
+		});
+		var question7 = Vue.extend({
+			template: '#question7',
+
+		});
+		var question8 = Vue.extend({
+			template: '#question8',
+
+		});
+
+		var router = new VueRouter({
+			//			mode: 'history',
+			routes: [{
+					path: '/question1',
+					component: question1
+				},
+				{
+					path: '/question2',
+					component: question2
+				},
+				{
+					path: '/question3',
+					component: question3
+				},
+				{
+					path: '/question4',
+					component: question4
+				},
+				{
+					path: '/question5',
+					component: question5
+				},
+				{
+					path: '/question6',
+					component: question6
+				},
+				{
+					path: '/question7',
+					component: question7
+				},
+				{
+					path: '/question8',
+					component: question8
+				},
+				{
+					path: '/',
+					component: question1
+				} //设置默认路径
+			]
+		});
+
+		//创建和挂载根实例;记得要通过 router 配置参数注入路由，从而让整个应用都有路由功能
+		var vm = new Vue({
+			router: router,
+			data: {
+				//默认显示题目号
+				activeQuestionNum: location.hash.replace('#/question', "") >= 1 ? location.hash.replace('#/question', "") : 1,
+			},
+			//监听路由转换
+			watch: {
+				'$route' (to, from) {
+					this.activeQuestionNum = to.path.replace("/question", "")
+				}
+			}
+		}).$mount('#app');
+	</script>
+
+</html>
