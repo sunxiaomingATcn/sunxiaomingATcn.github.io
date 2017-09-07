@@ -21,7 +21,7 @@ define(['angular', 'angularModule', 'jquery', 'EnglishData', 'ChineseData'], fun
 		
 		//我的作品鼠标跟随效果	
 		$scope.achievementMouseenterLeave = function($event) {
-
+			
 			var timeInterval = timeInterval || 500;
 
 			var w = $($event.currentTarget).width();
@@ -53,7 +53,7 @@ define(['angular', 'angularModule', 'jquery', 'EnglishData', 'ChineseData'], fun
 					currentTargetleft = -w
 					break;
 			}
-			if($event.type == 'mouseenter') {
+			if($event.type == 'mouseenter' || $event.type == 'mouseover') {
 				$($event.currentTarget).find('img').css({
 					'transform': 'scale(1.1,1.1)',
 					'transition': '1s all'
@@ -71,7 +71,7 @@ define(['angular', 'angularModule', 'jquery', 'EnglishData', 'ChineseData'], fun
 					'transform': 'scale(1,1)',
 					'transition': '1s all'
 				});
-				$($event.currentTarget).find(MouseElement).stop().animate({
+				$($event.currentTarget).find(MouseElement).animate({
 					top: currentTargettop,
 					left: currentTargetleft
 				}, timeInterval);

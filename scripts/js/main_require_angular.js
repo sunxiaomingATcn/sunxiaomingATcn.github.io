@@ -9,18 +9,17 @@ require.config({
 		"EnglishData": "EnglishData",
 		"ChineseData": "ChineseData",
 		"index": "angularIndex",
-		"ringlike": "../../SXM_DEMO/canvas/round/ringlike"
+		"ringlike": "ringlike"
 	},
 	shim: {
 		'angular': {
 			'exports': 'angular'
 		},
-
-	},
+	}
 })
 
 require(['jquery', 'angular', 'angularController', 'index'], function($, angular) {
-	//angular动态绑定
+	//angular动态绑定视图
 	angular.bootstrap(document, ["dataApp"]);
 
 })

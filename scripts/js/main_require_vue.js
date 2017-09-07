@@ -3,7 +3,7 @@ require.config({
 		"jquery": "../../libs/script/jquery-2.1.1.min",
 		"vue": "../../libs/script/vue.min",
 		"vueData": "vueData",
-		"ringlike": "../../SXM_DEMO/canvas/round/ringlike"
+		"ringlike": "ringlike"
 	}
 })
 
