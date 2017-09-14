@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>衣橱</title>
+		<link rel="stylesheet" href="css/media.css-750.css?time=2017072509.css" />
+		<link rel="stylesheet" href="css/suoysp.css?time=2017072509.css" />
+	</head>
+<style type="text/css">
+	.topimg_box,.bottomimg_box{
+		position: absolute;
+		width:100%;
+	}
+	.topimg_box{
+		top:0;left:0px;
+	}
+	.bottomimg_box{
+		right:0px;bottom: 0;
+	}
+	#zizhuyuyue{
+		position: absolute;
+		top:20%;
+		left:15%;
+		width: 2.8rem;
+	}
+	#qingsongyuyue{
+		position: absolute;
+		bottom:33%;
+		right:11%;
+		width: 2.8rem;
+	}
+	.zizhu_info{
+		position: absolute;
+		top:20%;
+		right:15%;
+		width: 1rem;
+	}
+	.qingsong_info{
+		position: absolute;
+		bottom:28%;
+		left:15%;
+		width: 1rem;
+	}
+	        .bounceLeft {
+				-webkit-animation: bounceLeft 1s ;
+			}
+			.bounceRight {
+				-webkit-animation: bounceRight 1s; 
+			}
+			.bounceUp {
+				-webkit-animation: bounceUp .85s forwards;
+			}
+			.bounceDown {
+				-webkit-animation: bouncedDown .85s forwards; 
+			}
+			@-webkit-keyframes bounceLeft {
+				0% {
+					-webkit-transform: translateX(-300px);
+					-webkit-filter: brightness(.8);
+				}
+				50%{
+					-webkit-filter: brightness(.3);
+				}
+				100% {
+					-webkit-transform: translateX(0);
+					-webkit-filter: brightness(1);
+				}
+			}
+			
+			@-webkit-keyframes bounceRight {
+				0% {
+					-webkit-transform: translateX(300px);
+					-webkit-filter: brightness(.8);
+				}
+				50%{
+					-webkit-filter: brightness(.3);
+				}
+				100% {
+					-webkit-transform: translateX(0);
+					-webkit-filter: brightness(1);
+				}
+			}
+			@-webkit-keyframes bounceUp {
+				0% {
+					-webkit-transform: translateY(0);
+				}
+				100% {
+					-webkit-transform: translateY(-500px);
+				}
+			}
+			@-webkit-keyframes bouncedDown {
+				0% {
+					-webkit-transform: translateY(0);
+				}
+				100% {
+					-webkit-transform: translateY(500px);
+				}
+			}
+</style>
+	<body class="yichu">
+			<div class="topimg_box bounceLeft">
+				<img src="img/bg_tp.png" alt="" />
+				<img src="img/zizhuyuyue@2x.png" alt="" id="zizhuyuyue"/>
+				<img src="img/xiangqing1@2x.png" alt="" class="zizhu_info"/>
+			</div>
+			<div class="bottomimg_box bounceRight">
+				<img src="img/bg_bt@2x.png" alt="" />
+				<img src="img/qingsongyuyue@2x.png" alt="" id="qingsongyuyue"/>
+				<img src="img/xiangqing2@2x.png" alt="" class="qingsong_info"/>
+			</div>
+			
+	</body>
+	<script src="js/jquery-1.11.1.min.js?time=2017072509"></script>
+	<script src="js/all.js?time=2017072509"></script>
+	<script type="text/javascript">
+		$(function(){
+			function animate(cb){
+				$(".topimg_box").addClass("bounceUp");
+			    $(".bottomimg_box").addClass("bounceDown");
+			    setTimeout(function(){
+			    	cb();
+			    },600)
+			}
+			var memberId=localStorage.MemberId;
+			
+				if(memberId){
+			     	$(".topimg_box").addClass("bounceLeft");
+					$(".bottomimg_box").addClass("bounceRight");
+					$("#zizhuyuyue").click(function(){
+							animate(function(){
+									window.location.href = 'newAppointment/index.html';
+							});
+					})
+					$("#qingsongyuyue").click(function(){
+							animate();
+					})
+					
+				}else{
+					window.location.href="login.html";
+				}
+		})
+	</script>
+</html>

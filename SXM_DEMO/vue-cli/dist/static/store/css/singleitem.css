@@ -137,7 +137,8 @@
 	width:88%;
 	padding: 5px;
 	margin-top: 10px;
-	background-color: rgba(255,255,255,0.26);
+	background-color: rgba(255,255,255,.2);
+	/*box-shadow: 4px 5px 3px #999;*/
 }
 .clo1 .white_bg{
 	margin-left:5%;
@@ -147,9 +148,11 @@
 }
 .commodity{
 	width: 100%;
+	min-height: 300px;
 }
 .picture{
 	overflow: hidden;
+	max-height: 243px;
 }
 .picture img{
 	width: 100%;
@@ -221,4 +224,14 @@
     background-image:-o-linear-gradient(top, #999, #666 2%, #222);
     padding:0;
     border-top:1px solid #444;
+}
+.lodinggif{
+	position: fixed;
+	width:3.5rem;
+	height: 3.5rem;
+	z-index: 2;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	
 }

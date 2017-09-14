@@ -5,12 +5,21 @@ $("#wrapper").height(singleBodyHg);
 $(".bgBody,.bagfil").height(singleBodyHg);
 $(".cloBagd ").height(singleBodyHg - footerUl);
 var host = 'https://api.0-fashion.com';
-//	var host = 'http://11.1.1.113:8888';
+var host2 = 'http://www.0-fashion.com';
 var MemberId = localStorage.MemberId;
 var CategoryId = localStorage.ParentCategoryName;
 var userNum = localStorage.u_num;
 var dataId = localStorage.dataId;
+
+function getLocalTime(nS) {     
+   return new Date(parseInt(nS) * 1000).toLocaleDateString().replace(/:\d{1,2}$/,' ');     
+}     
 $(function() {
+	//时间戳转换日期
+
+
+
+
 	//清除隐藏
 	$("#account").focus(function() {
 		$(".clearPhone").show();
@@ -30,7 +39,10 @@ $(function() {
 		$(".dialog_box").hide();
 	});
 	$(".souquan").click(function() {
+		localStorage.MemberId='';
+	    localStorage.u_num='';
 		location.replace('login.html');
+		
 	})
 	//登陆
 	$("#login_btn").click(function() {
@@ -58,7 +70,9 @@ $(function() {
 						localStorage.u_num = data.Data.U_Num;
 						localStorage.UserPhoto = data.Data.UserPhoto;
 						localStorage.MemberName = data.Data.MemberName;
-						location.href = 'shezhi.html';
+						localStorage.isTest=data.Data.IsTest;//true做了风格测试false没做
+						localStorage.isDetailTest=data.Data.isDetailTest;//1做了详细测试0没做
+						location.href = '../../index.html';
 					} else {
 						showDiag(data.Message);
 					}
@@ -113,7 +127,7 @@ $(function() {
 	//	location.href = '/home/store/shangpin.html';
 				location.href = 'shangpin.html';
 	});
-	$('.searchMsg').click(function() {
+	$('.searchMsg').click(function() {//index页面的搜索栏
 		var inTxt = $(".huohao").val();
 		window.localStorage.setItem("val", inTxt);
 		window.localStorage.setItem("datt", 1);
@@ -121,7 +135,7 @@ $(function() {
 				location.href = 'shangpin.html';
 	});
 
-	$('.searchShangpin').click(function() {
+	$('.searchShangpin').click(function() {//商品页面的搜索栏
 		var inTxt = $(".huohao").val();
 		window.localStorage.setItem("datt", 1);
 		//window.localStorage.setItem("val", inTxt);
@@ -182,20 +196,15 @@ $(function() {
 		$(".yuyueYd").hide();
 	}
 	$(".huodBtn").unbind("click").click(function() {
-		//		debugger
 		$(".huodongYd").attr("data-int", '1').hide();
 		var huodongYd = $(".huodongYd").attr("data-int");
 		localStorage.huodongYd = huodongYd;
-		//					debugger;
 		$.post("http://api.0-fashion.com/Api/Games/Game/GetGameInfo", {
 			Tag: 'FiveYear',
 			MemberId: localStorage.MemberId,
 			U_Num: localStorage.u_num
-			//												MemberId: 6382,
-			//												U_Num: "a8dc9d8744038399"
 
 		}, function(da) {
-			//						debugger;
 			console.log(da);
 			if(da.ResultType == 3) {
 				var LimitCount = da.Data.LimitCount;

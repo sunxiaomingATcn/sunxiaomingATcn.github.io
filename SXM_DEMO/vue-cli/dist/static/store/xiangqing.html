@@ -14,7 +14,7 @@
 				width: 100%;
 				border: none;
 			}
-.footer{width: 100%;height:500px;position: absolute;bottom: -445px;z-index: 9999;background: rgba(255,255,255,.85);}
+.footer{width: 100%;height:200px;position: absolute;bottom: -145px;z-index: 9999;background: rgba(255,255,255,.85);}
 .footer .money{position: absolute;top:2%;left:6%;font-size: .4rem;}
 .footer .more{justify-content: center;display: flex;position: absolute;top: 5%;left: 50%;width: 1rem;height: .5rem;margin-left: -.5rem;}
 .bt img{width: 100%;height: 100%;}
@@ -26,9 +26,7 @@
 	<body>
 		<div class="shade">
 			<div class="headerXq">
-				<div class="nav_back">
-					<img src="img/xiangqing/nav_return@2x.png" alt="" />返回
-				</div>
+		  
 				<div class="yuyue">
 					<img class="shoping" data-init='1' src="img/xiangqing/xin-1@2x.png" alt="" />
 				</div>
@@ -48,13 +46,9 @@
 		<div class="footer_content">
 		   <div style="border-bottom: 1px solid rgba(0,0,0,.4);padding:.2rem;font-size:12px;">编号 : <strong id="BH"></strong></div>
 		   <div class="product_details">产品详情</div>
-		   <div>评价</div>
-		   <div>相关搭配</div>
-		   <div>尺码帮助</div>
-		   <div>保养与维护</div>
-		   <div>实体门店</div>
+		
 		   <div style="color:red" class="yuyue2">预约试穿</div>
-		   <div>分享</div>
+		  
 		</div>
 		
 	</div>
@@ -184,7 +178,7 @@
 										}
 									});
 									console.log(ProductId, ProductNumber);
-									window.location.href = '/?ProductNumber='+ProductNumber+'&imagesrc='+$('.swiper-slide-active img').attr('src')
+									window.location.href = 'newAppointment/index.html?ProductNumber='+ProductNumber+'&imagesrc='+$('.swiper-slide-active img').attr('src')
 									//callbackFn(ProductId, ProductNumber);
 								})
 
@@ -235,7 +229,7 @@
 							
 							if(cons.ProductImages.length!=0){
 								$.each(cons.ProductImages,function(i,item){
-			                      $('.swiper-wrapper').append('<div class="swiper-slide"><img style="max-height: 500px;width:auto;" src="'+item.ThumbnailSmallPath+'"/></div>')
+			                      $('.swiper-wrapper').append('<div class="swiper-slide"><img style="max-height: 500px;width:auto" src="'+item.ThumbnailSmallPath+'"/></div>')
 			                    });
 							}else{
 								 $('.swiper-wrapper').append('<div class="swiper-slide"><img style="max-height: 500px;width:auto;" src="img/xiangqing/unknow.jpg"/></div>')
@@ -247,7 +241,7 @@
 							$('.more').bind('click',function(){
 							
 							  	if($('.more img').attr('src').indexOf("arrow_under@2x.png")>=0){
-							 		$(".footer").animate({'bottom':'-440px'},200);
+							 		$(".footer").animate({'bottom':'-145px'},200);
 							 		 $('.more img').attr('src','img/xiangqing/more@2x.png').css({'height':'100%','width':'100%'});
 							    }else{
 							    	$(".footer").animate({'bottom':0},500);
@@ -277,7 +271,8 @@
 						$(".particulars iframe").hide();
 						$(".footer,.swiper-container").show();
 					}else{
-						location.href = 'shangpin.html';
+					//	location.href = 'shangpin.html';
+          	window.history.go(-1);
 					}
 					
 				});

@@ -4,15 +4,20 @@ function return_Launch() {
 	window.location.href = '../shezhi.html';
 }
 
-function closeWin(item) {
-//	console.log(item);
-	window.location.href = 'fenggeceshi_' + item + '.html';
+function closeWin(item,goback) {
+	var back=goback||false;
+	if(goback){
+		window.history.go(-1);
+//window.location.href="../shezhi.html";
+	}else{
+		window.location.href = 'fenggeceshi_' + item + '.html';
+	}
+	
 }
 function closeShezhi(){
 	window.location.href = '../shezhi.html';
 }
 function backNew() {
-	window.localStorage.ceShi=0;
 	window.location.href = "fenggeceshi_1.html";
 }
 
