@@ -40,6 +40,11 @@
 			<button onclick="getallfile()">打印当前所有file</button>
 			<textarea name="" rows="" cols="">
 使用方法
+引入css
+<link rel="stylesheet" href="imageread.css" />
+引入脚本
+<script src="fileReader.js"></script>
+创建实例
 var imageFile = new readImage({
 	Multiselect: true, //Boolean 允许多选，非必传，默认false
 	id: "file1", //自定义input file的id,非必传，默认body
